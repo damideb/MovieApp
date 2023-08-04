@@ -14,8 +14,11 @@ React.useEffect(() => {
         firstRender.current = false
     return;
     } 
-    if(!firstRender.current && movies.length===0 ) {
-        setErrorText('Movie not found')
+   
+    return ()=>{
+        if(!firstRender.current && movies.length===0 ) {
+            setErrorText('Movie not found')
+        }
     }
 }, [movies])
 
