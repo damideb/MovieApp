@@ -27,15 +27,15 @@ React.useEffect(() => {
 
 const searhMovies= async (e)=>{
     e.preventDefault()
-try{
-    const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&
-    language=en-US&query=${inputValue}&page=1&include_adult=false`)
-    const data = await res.json()
-   setMovies(data.results)
-   
-}
-catch (error){
-console.log(error)
+    try{
+        const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&
+        language=en-US&query=${inputValue}&page=1&include_adult=false`)
+        const data = await res.json()
+    setMovies(data.results)
+    
+    }
+    catch (error){
+    console.log(error)
 }
 
 

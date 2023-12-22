@@ -35,9 +35,6 @@ export default function Movie(){
         }
        
     }
-
-
-    
     React.useEffect(() => {
         if (firstRender.current) {
             fetchMovie()
@@ -46,10 +43,7 @@ export default function Movie(){
        
 
     }, [])
-
-
   
-    
     return(
         <>
          <h1 className="title">Movie App</h1>
