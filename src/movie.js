@@ -18,16 +18,16 @@ export default function Movie(){
         setSelectedMovie(data.results[0])
     }
 
-    console.log(allMovies[0])
+
     const searhMovies= async (e)=>{
         e.preventDefault()
         if (inputValue){
             try{
                 const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&
-                language=en-US&query=${inputValue}&page=1&include_adult=false`)
+                language=en-US&query=${inputValue}&page=2&include_adult=false`)
                 const data = await res.json()
-            setallMovies(data.results)
-            
+                const results = data.results
+                if(results.length) setallMovies(results)
             }
             catch (error){
             console.log(error)
@@ -36,25 +36,23 @@ export default function Movie(){
        
     }
     React.useEffect(() => {
-        if (firstRender.current) {
+        if (firstRender.current && inputValue==="") {
             fetchMovie()
             
         } 
-       
-
-    }, [])
+    }, [inputValue])
   
     return(
         <>
          <h1 className="title">Movie App</h1>
-         <form className="form" onSubmit={searhMovies}>
+         <form onSubmit={searhMovies}>
             <label className="label" htmlFor="query"></label>
                 <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
                 value={inputValue}
                 onChange={(e)=>{
                     setInputValue(e.target.value)
                 }}/>
-                <button type="submit" className="button">Search Movie</button>
+                <button type="submit">Search Movie</button>
             </form>
                     <div className="hero" style={{background: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}}>
                         <div className="selected">
