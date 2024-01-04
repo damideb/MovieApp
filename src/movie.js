@@ -1,6 +1,7 @@
 import React,{useRef, useState} from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./MovieImage";
+import { Link } from "react-router-dom";
 
 export default function Movie(){
 
@@ -56,7 +57,11 @@ export default function Movie(){
             <h1 className="title">Movie App</h1>
             <div className="icons">
                 <FaRegCircleUser style={styles}/>
-                <h2 className="login">Log In</h2>
+                <h2 className="loginLink">
+                    <Link to="/login">
+                        Log In
+                    </Link></h2>
+              
                 <form onSubmit={searhMovies}>
                     <label className="label" htmlFor="query"></label>
                         <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
@@ -64,7 +69,7 @@ export default function Movie(){
                         onChange={(e)=>{
                             setInputValue(e.target.value)
                         }}/>
-                        <button type="submit">Search Movie</button>
+                        <button className="button" type="submit">Search Movie</button>
                 </form>
                      
             </div>

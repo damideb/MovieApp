@@ -5,7 +5,9 @@ html {
 * {
   box-sizing: border-box;
 }
-
+a{
+  color: #ddd;
+}
 body {
   margin: 0;
   padding: 0;
@@ -45,7 +47,7 @@ form{
   margin-top: 1em;
 }
 
-.login{
+.loginLink{
   width: 15%;
   font-size: 1.7rem;
   margin-top: auto;
@@ -69,7 +71,7 @@ form{
   outline: none;
 }
 
-button {
+.button {
   background-color:#ddd ;
   color: black;
   padding: 3px;
@@ -146,6 +148,69 @@ button {
 min-height: 100%;
 min-width: 100%;
   object-fit: fill;
+}
+
+/* login page */
+
+.login-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 5rem;
+  min-height: 100%;
+}
+
+.login-div{
+  /* sm:mx-auto sm:w-full sm:max-w-sm */
+  margin-bottom: auto;
+}
+
+.login-heading{
+  margin-top: 2em;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bolder;
+}
+.login-body{
+  margin-top: 1.5em;
+
+}
+
+.login-element{
+  padding-bottom: 3em;
+  margin: 2em 8em;
+}
+.email-label, .password-label{
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 2em;
+}
+.input-div{
+  margin-top: 1em;
+}
+
+.input-email, .input-password{
+  display: block;
+  width: 25em;
+  border-radius: 5px;
+  padding:0.8em 1.5em;
+  outline: none;
+  font-size: 1.5rem;
+}
+.Login-button{
+  width: 100%;
+  margin-top: 2em;
+  font-size: 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 0.3em;
+  background-color: #ddd;
+}
+
+.register-text{
+  text-align: center;
+  font-size: 1.3rem;
 }
 
 @media (min-width:786px){
