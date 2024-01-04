@@ -33,14 +33,24 @@ small {
   margin: 0;
 }
 
+.icons{
+  display: flex;
+}
+
 form{
   display: flex;
   width: 24em;
   height: 4em;
   margin-left: auto;
   margin-top: 1em;
+}
 
-
+.login{
+  width: 15%;
+  font-size: 1.7rem;
+  margin-top: auto;
+  cursor:pointer;
+  letter-spacing: 1px;
 }
 .label {
   font-size: 1.2rem;
@@ -51,7 +61,7 @@ form{
 .input {
   font-size: 1.2rem;
   height: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5em 1em;
   line-height: 2rem;
   border-radius: 10px 0;
   border: 1px solid #ddd;

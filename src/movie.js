@@ -1,4 +1,5 @@
 import React,{useRef, useState} from "react";
+import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./MovieImage";
 
 export default function Movie(){
@@ -7,7 +8,6 @@ export default function Movie(){
     const[selectedMovie, setSelectedMovie] = useState({})
     const[inputValue, setInputValue] =useState("")
     const key = process.env.REACT_APP_API_KEY
-
 
     const firstRender= useRef(true)
 
@@ -41,42 +41,56 @@ export default function Movie(){
             
         } 
     }, [inputValue])
+
+    const styles= {
+        fontSize: '5rem',
+        width:"5%",
+        margin:"0 0.3em",
+        color:"#ddd",
+        cursor:"pointer"
+    }
+   
   
     return(
         <>
-         <h1 className="title">Movie App</h1>
-         <form onSubmit={searhMovies}>
-            <label className="label" htmlFor="query"></label>
-                <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
-                value={inputValue}
-                onChange={(e)=>{
-                    setInputValue(e.target.value)
-                }}/>
-                <button type="submit">Search Movie</button>
-            </form>
-                    <div className="hero" style={{background: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}}>
-                        <div className="selected">
-                        <h1 className="selected-title">{selectedMovie.title}</h1>
-                <p className="selected-overview">{selectedMovie.overview}</p>
-                        </div>
-
-                {/* <img
-                src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${selectedMovie.poster_path}`}
-                alt=""/> */}
+            <h1 className="title">Movie App</h1>
+            <div className="icons">
+                <FaRegCircleUser style={styles}/>
+                <h2 className="login">Log In</h2>
+                <form onSubmit={searhMovies}>
+                    <label className="label" htmlFor="query"></label>
+                        <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
+                        value={inputValue}
+                        onChange={(e)=>{
+                            setInputValue(e.target.value)
+                        }}/>
+                        <button type="submit">Search Movie</button>
+                </form>
+                     
             </div>
-        
-        <div className="all-container">
-            <div className="all-card-list">
-            {
-                allMovies.filter(movie=> movie.poster_path).map((movie, index)=>{
-                 return  <MovieImage key={movie.id}
-                            movie={movie}
-                            setmovie= {setSelectedMovie}
-                            />
-                })
-            }
-</div>
-        </div>
+              <div className="hero" style={{background: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}}>
+                            <div className="selected">
+                            <h1 className="selected-title">{selectedMovie.title}</h1>
+                    <p className="selected-overview">{selectedMovie.overview}</p>
+                            </div>
+
+                    {/* <img
+                    src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${selectedMovie.poster_path}`}
+                    alt=""/> */}
+                </div>
+            
+                <div className="all-container">
+                    <div className="all-card-list">
+                        {
+                            allMovies.filter(movie=> movie.poster_path).map((movie, index)=>{
+                            return  <MovieImage key={movie.id}
+                                        movie={movie}
+                                        setmovie= {setSelectedMovie}
+                                        />
+                            })
+                        }
+                    </div>
+            </div>
         </>
     )
 }

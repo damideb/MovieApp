@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import YouTube from 'react-youtube'
 
 
@@ -7,6 +7,8 @@ export default function MoviePlayer() {
 
   const [trailerMovie, setTrailerMovie] = useState({})
   const [movieDetails, setMovieDetails] = useState({})
+
+
 
   const {movieId} = (useParams())
   const parseMovie = parseInt(movieId)
