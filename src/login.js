@@ -1,11 +1,24 @@
 import { useState} from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "./firebase"
 
 export default function Signin() {
 
     const[useremail, setUseremail] = useState('')
     const [userPassword, setUserpassword] = useState('')
+
+    const navigate = useNavigate()
+
+    const login = ()=>{
+      signInWithEmailAndPassword(auth, useremail, userPassword)
+      .then(()=>{
+        navigate('/')
+      })
+      .catch((error)=>{
+        console.log(error.code)
+      })
+    }
 
     return (
       <>
@@ -58,6 +71,7 @@ export default function Signin() {
                 <button
                   type="submit"
                   className="Login-button"
+                  onClick={login}
                 >
                   Log in
                 </button>

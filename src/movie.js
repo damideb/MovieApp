@@ -2,21 +2,30 @@ import React,{useRef, useState} from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./MovieImage";
 import { Link } from "react-router-dom";
+import { auth } from "./firebase";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Movie(){
 
     const[allMovies, setallMovies] = useState( [])
     const[selectedMovie, setSelectedMovie] = useState({})
     const[inputValue, setInputValue] =useState("")
+    const[user, setUser] = useState("")
     const key = process.env.REACT_APP_API_KEY
 
     const firstRender= useRef(true)
 
     const fetchMovie = async()=>{
-        const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US`)
-        const data= await res.json()
-        setallMovies(data.results)
-        setSelectedMovie(data.results[0])
+        try{
+            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US`)
+            const data= await res.json()
+            setallMovies(data.results)
+            setSelectedMovie(data.results[0])
+        }
+        catch(error){
+            console.log(error)
+        }
+       
     }
 
 
@@ -36,32 +45,55 @@ export default function Movie(){
         }
        
     }
+
+
     React.useEffect(() => {
         if (firstRender.current && inputValue==="") {
             fetchMovie()
-            
         } 
+       
     }, [inputValue])
 
+   
+        onAuthStateChanged(auth, user=>{
+            if(user) setUser(user.displayName)
+
+            else{
+                setUser()
+            }
+        })
+        
+    
+
+    const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
+
+    const userSignOut = async()=>{
+        await signOut(auth)
+        console.log('out')
+    }
+
+   
+
     const styles= {
-        fontSize: '5rem',
-        width:"5%",
+        fontSize: '7rem',
+        width:"20%",
         margin:"0 0.3em",
         color:"#ddd",
         cursor:"pointer"
     }
    
-  
     return(
         <>
             <h1 className="title">Movie App</h1>
             <div className="icons">
+                <div>
                 <FaRegCircleUser style={styles}/>
+                <h2 onClick={userSignOut}>Log Out</h2>
+                </div>
+                
                 <h2 className="loginLink">
-                    <Link to="/login">
-                        Log In
-                    </Link></h2>
-              
+                    {userUi}
+                </h2>
                 <form onSubmit={searhMovies}>
                     <label className="label" htmlFor="query"></label>
                         <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
@@ -79,9 +111,6 @@ export default function Movie(){
                     <p className="selected-overview">{selectedMovie.overview}</p>
                             </div>
 
-                    {/* <img
-                    src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${selectedMovie.poster_path}`}
-                    alt=""/> */}
                 </div>
             
                 <div className="all-container">

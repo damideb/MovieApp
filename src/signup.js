@@ -1,21 +1,39 @@
 import { useState} from "react"
-import { Link } from "react-router-dom"
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { Link, useNavigate } from "react-router-dom"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { auth } from "./firebase"
 
 export default function Signin() {
 
     const[userInfo, setUserInfo] = useState({
         email: '',
-        password: ''
-    
+        password: '', 
+        userName:''
     })
+
+    const navigate = useNavigate()
 
     
 const signUp =()=>{
     createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
-    console.log('ydyd')
-   
+    .then((userCredential)=>{
+      console.log(userCredential)
+      updateProfile(auth.currentUser,{
+        displayName: userInfo.userName
+      })
+      
+    })
+    .then(()=>{
+      setTimeout(()=>{
+        alert('Account successfully registered')
+        navigate('/login')
+      }, 2000)
+    })
+    .catch((error)=>{
+      console.log(error.code)
+    })
+
+      
 }
 
     return (
@@ -56,6 +74,7 @@ const signUp =()=>{
                     id="username"
                     name="username"
                     type="text"
+                    onChange={(e)=>setUserInfo({...userInfo, userName:e.target.value})}
                     required
                     className="input-password"
                   />
