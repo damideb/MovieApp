@@ -8,8 +8,6 @@ export default function MoviePlayer() {
   const [trailerMovie, setTrailerMovie] = useState({})
   const [movieDetails, setMovieDetails] = useState({})
 
-
-
   const {movieId} = (useParams())
   const parseMovie = parseInt(movieId)
 

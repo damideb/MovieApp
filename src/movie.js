@@ -7,10 +7,11 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 
 export default function Movie(){
 
-    const[allMovies, setallMovies] = useState( [])
+    const[allMovies, setallMovies] = useState([])
     const[selectedMovie, setSelectedMovie] = useState({})
     const[inputValue, setInputValue] =useState("")
     const[user, setUser] = useState("")
+   
     const key = process.env.REACT_APP_API_KEY
 
     const firstRender= useRef(true)
@@ -42,8 +43,7 @@ export default function Movie(){
             catch (error){
             console.log(error)
             }
-        }
-       
+        } 
     }
 
 
@@ -52,7 +52,7 @@ export default function Movie(){
             fetchMovie()
         } 
        
-    }, [inputValue])
+    }, [])
 
    
         onAuthStateChanged(auth, user=>{
@@ -62,45 +62,43 @@ export default function Movie(){
                 setUser()
             }
         })
-        
-    
 
     const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
 
     const userSignOut = async()=>{
         await signOut(auth)
-        console.log('out')
     }
-
-   
 
     const styles= {
-        fontSize: '7rem',
-        width:"20%",
+        fontSize: '5rem',
+        width:"100%",
         margin:"0 0.3em",
         color:"#ddd",
-        cursor:"pointer"
+        cursor:"pointer", 
     }
-   
+
     return(
         <>
             <h1 className="title">Movie App</h1>
+            
             <div className="icons">
-                <div>
-                <FaRegCircleUser style={styles}/>
-                <h2 onClick={userSignOut}>Log Out</h2>
-                </div>
-                
+                <div className="LogoutProfile">
+                    <FaRegCircleUser style={styles}/>
+                    <ul>
+                        <li className="logout">
+                            <h2 onClick={userSignOut}>LogOut</h2>
+                        </li>
+                    </ul>
+                    </div>
                 <h2 className="loginLink">
                     {userUi}
                 </h2>
                 <form onSubmit={searhMovies}>
-                    <label className="label" htmlFor="query"></label>
-                        <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
-                        value={inputValue}
-                        onChange={(e)=>{
-                            setInputValue(e.target.value)
-                        }}/>
+                    <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
+                    value={inputValue}
+                    onChange={(e)=>{
+                        setInputValue(e.target.value)
+                    }}/>
                         <button className="button" type="submit">Search Movie</button>
                 </form>
                      
