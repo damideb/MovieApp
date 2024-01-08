@@ -50,8 +50,7 @@ small {
   }
   .logout{
     /* display: none; */
-    display: none;
-   
+    display: none;  
   }
 
   .LogoutProfile:hover .logout{
@@ -76,10 +75,12 @@ form{
 
 .loginLink{
   width: 14%;
-  font-size: 1.7rem;
+  font-size: 2rem;
   margin-top: auto;
   cursor:pointer;
-  margin-left: 2em;
+  left: 5em;
+  top: 3em;
+  position: absolute;
 }
 
 h2{

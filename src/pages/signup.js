@@ -1,31 +1,47 @@
 import { useState} from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "./firebase"
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
+import { auth } from "../firebase"
 
 export default function Signin() {
 
-    const[useremail, setUseremail] = useState('')
-    const [userPassword, setUserpassword] = useState('')
+    const[userInfo, setUserInfo] = useState({
+        email: '',
+        password: '', 
+        userName:''
+    })
 
     const navigate = useNavigate()
 
-    const login = ()=>{
-      signInWithEmailAndPassword(auth, useremail, userPassword)
-      .then(()=>{
-        navigate('/')
+    
+const signUp =()=>{
+    createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+    .then((userCredential)=>{
+      console.log(userCredential)
+      updateProfile(auth.currentUser,{
+        displayName: userInfo.userName
       })
-      .catch((error)=>{
-        console.log(error.code)
-      })
-    }
+      
+    })
+    .then(()=>{
+      setTimeout(()=>{
+        alert('Account successfully registered')
+        navigate('/login')
+      }, 2000)
+    })
+    .catch((error)=>{
+      console.log(error.code)
+    })
+
+      
+}
 
     return (
       <>
         <div className="login-form">
           <div className="login-div">
             <h2 className="login-heading">
-              Log in to your account
+              Register your account
             </h2>
           </div>
   
@@ -39,7 +55,7 @@ export default function Signin() {
                   <input
                     id="email"
                     name="email"
-                    onChange={(e)=>setUseremail(e.target.value)}
+                    onChange={(e)=>setUserInfo({...userInfo, email:e.target.value})}
                     type="email"
                     autoComplete="email"
                     required
@@ -47,6 +63,23 @@ export default function Signin() {
                   />
                 </div>
               </div>
+            <div>
+              <div className="flex items-center justify-between">
+                  <label htmlFor="password" className="password-label">
+                    Username:
+                  </label>
+                </div>
+                <div className="mt-2">
+                  <input
+                    id="username"
+                    name="username"
+                    type="text"
+                    onChange={(e)=>setUserInfo({...userInfo, userName:e.target.value})}
+                    required
+                    className="input-password"
+                  />
+                </div>
+                </div>
   
               <div>
                 <div className="flex items-center justify-between">
@@ -56,10 +89,11 @@ export default function Signin() {
                 </div>
                 <div className="mt-2">
                   <input
+                    placeholder="at least 6 characters"
                     id="password"
                     name="password"
                     type="password"
-                    onChange={(e)=>setUserpassword(e.target.value)}
+                    onChange={(e)=>setUserInfo({...userInfo, password:e.target.value})}
                     autoComplete="current-password"
                     required
                     className="input-password"
@@ -71,17 +105,17 @@ export default function Signin() {
                 <button
                   type="submit"
                   className="Login-button"
-                  onClick={login}
+                  onClick={signUp}
                 >
-                  Log in
+                  Sign Up
                 </button>
               </div>
             </div>
   
             <p className="register-text">
-              Not a member?{' '}
+              Already have an account?{' '}
              <span className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"> 
-                <Link to="/signup">Register here</Link>
+                <Link to="/login">Log in</Link>
             </span>
             </p>
           </div>

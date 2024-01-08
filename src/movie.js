@@ -17,6 +17,7 @@ export default function Movie(){
     const firstRender= useRef(true)
 
     const fetchMovie = async()=>{
+        
         try{
             const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US`)
             const data= await res.json()
@@ -51,17 +52,20 @@ export default function Movie(){
         if (firstRender.current && inputValue==="") {
             fetchMovie()
         } 
-       
-    }, [])
+       return()=>{
+        firstRender.current= false
+       }
+    }, [inputValue])
 
-   
+    React.useEffect(()=>{
         onAuthStateChanged(auth, user=>{
             if(user) setUser(user.displayName)
-
             else{
-                setUser()
+                setUser(null)
             }
         })
+    }, [])
+
 
     const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
 
@@ -80,7 +84,6 @@ export default function Movie(){
     return(
         <>
             <h1 className="title">Movie App</h1>
-            
             <div className="icons">
                 <div className="LogoutProfile">
                     <FaRegCircleUser style={styles}/>
@@ -94,7 +97,7 @@ export default function Movie(){
                     {userUi}
                 </h2>
                 <form onSubmit={searhMovies}>
-                    <input type="text" className="input" name="query" placeholder="i.e. Little Mermaid"
+                    <input type="search" className="input" name="query" placeholder="i.e. Little Mermaid"
                     value={inputValue}
                     onChange={(e)=>{
                         setInputValue(e.target.value)

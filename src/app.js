@@ -1,9 +1,9 @@
 import React from "react";
 import {Routes,Route} from 'react-router-dom'
 import Movie from "./movie";
-import MoviePlayer from "./MoviePlayer";
-import Login from "./login";
-import Signup from "./signup";
+import MoviePlayer from "./pages/MoviePlayer";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
 export default function App(){
 
