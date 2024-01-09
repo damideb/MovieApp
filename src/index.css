@@ -53,6 +53,7 @@ small {
     display: none;  
   }
 
+
   .LogoutProfile:hover .logout{
     display: block;
     position: absolute;
@@ -185,7 +186,12 @@ min-width: 100%;
 
 
 /* login page */
-
+.stateMessage{
+  color: rgba(250, 93, 93, 0.76);
+  font-size: 1.4rem;
+  letter-spacing: 0.7px;
+  margin-top: 2em;
+}
 .login-form{
   display: flex;
   justify-content: center;

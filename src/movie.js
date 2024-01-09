@@ -11,6 +11,7 @@ export default function Movie(){
     const[selectedMovie, setSelectedMovie] = useState({})
     const[inputValue, setInputValue] =useState("")
     const[user, setUser] = useState("")
+    const [open, setOpen] = useState(true)
    
     const key = process.env.REACT_APP_API_KEY
 
@@ -64,13 +65,14 @@ export default function Movie(){
                 setUser(null)
             }
         })
-    }, [])
+    }, [user])
 
 
     const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
-
+console.log(user)
     const userSignOut = async()=>{
         await signOut(auth)
+        setOpen(false)
     }
 
     const styles= {
@@ -86,12 +88,14 @@ export default function Movie(){
             <h1 className="title">Movie App</h1>
             <div className="icons">
                 <div className="LogoutProfile">
-                    <FaRegCircleUser style={styles}/>
-                    <ul>
+                    <FaRegCircleUser style={styles}
+                        onMouseEnter={()=>setOpen(true)}
+                    />
+                    {(open && user) && <ul>
                         <li className="logout">
                             <h2 onClick={userSignOut}>LogOut</h2>
                         </li>
-                    </ul>
+                    </ul>}
                     </div>
                 <h2 className="loginLink">
                     {userUi}

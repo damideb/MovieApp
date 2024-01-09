@@ -11,6 +11,8 @@ export default function MoviePlayer() {
   const {movieId} = (useParams())
   const parseMovie = parseInt(movieId)
 
+
+
   
 
   const fetchTrailer =  async(id)=>{

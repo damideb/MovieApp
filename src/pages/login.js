@@ -1,5 +1,5 @@
 import { useState} from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useLocation } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase"
 
@@ -9,11 +9,15 @@ export default function Signin() {
     const [userPassword, setUserpassword] = useState('')
 
     const navigate = useNavigate()
-
+    const location = useLocation()
+    
+    const from = location.state?.from || '/'
+    
+  
     const login = ()=>{
       signInWithEmailAndPassword(auth, useremail, userPassword)
       .then(()=>{
-        navigate('/')
+        navigate(from, {replace: true})
       })
       .catch((error)=>{
         console.log(error.code)
@@ -23,6 +27,9 @@ export default function Signin() {
       <>
         <div className="login-form">
           <div className="login-div">
+            {
+              location.state?.message && <h3 className="stateMessage">{location.state.message}</h3>
+            }
             <h2 className="login-heading">
               Log in to your account
             </h2>
