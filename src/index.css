@@ -138,6 +138,10 @@ h2{
   margin-top: 2rem;
   
 }
+.all-skeleton{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
 
 .card {
   padding: 1rem 0;
@@ -181,6 +185,11 @@ h2{
 min-height: 100%;
 min-width: 100%;
   object-fit: fill;
+}
+
+.skeletonPlayer{
+transform: translate(20%, 50%);
+
 }
 
 

@@ -1,9 +1,11 @@
 import React,{useRef, useState} from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
-import MovieImage from "./MovieImage";
+import MovieImage from "./components/MovieImage";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
+import SkeletonCard from "./components/skeletonCard";
+
 
 export default function Movie(){
 
@@ -12,6 +14,7 @@ export default function Movie(){
     const[inputValue, setInputValue] =useState("")
     const[user, setUser] = useState("")
     const [open, setOpen] = useState(true)
+    const [loading, setLoading] = useState(true)
    
     const key = process.env.REACT_APP_API_KEY
 
@@ -27,6 +30,9 @@ export default function Movie(){
         }
         catch(error){
             console.log(error)
+        }
+        finally{
+            setLoading(false)
         }
        
     }
@@ -48,16 +54,6 @@ export default function Movie(){
         } 
     }
 
-
-    React.useEffect(() => {
-        if (firstRender.current && inputValue==="") {
-            fetchMovie()
-        } 
-       return()=>{
-        firstRender.current= false
-       }
-    }, [inputValue])
-
     React.useEffect(()=>{
         onAuthStateChanged(auth, user=>{
             if(user) setUser(user.displayName)
@@ -67,9 +63,23 @@ export default function Movie(){
         })
     }, [user])
 
+    React.useEffect(() => {
+        if (firstRender.current && inputValue==="") {
+            fetchMovie()
+            
+           
+        } 
+       return()=>{
+        firstRender.current= false
+        
+       }
+    }, [inputValue])
+
+  
+
 
     const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
-console.log(user)
+
     const userSignOut = async()=>{
         await signOut(auth)
         setOpen(false)
@@ -83,9 +93,10 @@ console.log(user)
         cursor:"pointer", 
     }
 
-    return(
+    return loading? <SkeletonCard cards={12}/> : (
         <>
             <h1 className="title">Movie App</h1>
+         
             <div className="icons">
                 <div className="LogoutProfile">
                     <FaRegCircleUser style={styles}
