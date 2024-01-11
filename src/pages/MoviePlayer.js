@@ -57,7 +57,6 @@ export default function MoviePlayer() {
                 </div>
             </div>
             : 
-          
             <h1>{`The Official Trailer for ${movieDetails.title} is not availabe`}</h1>
           }
         </div>
