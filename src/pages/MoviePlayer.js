@@ -7,32 +7,32 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function MoviePlayer() {
 
-  const [trailerMovie, setTrailerMovie] = useState({})
-  const [movieDetails, setMovieDetails] = useState({})
-  const [loadingg, setLoadingg]= useState(true)
+    const [trailerMovie, setTrailerMovie] = useState({})
+    const [movieDetails, setMovieDetails] = useState({})
+    const [loadingg, setLoadingg]= useState(true)
 
-  const {movieId} = (useParams())
-  const parseMovie = parseInt(movieId)
-
-
-  const loadingVal = async ()=>{
-       setLoadingg(false)
-  }
-  
-
-  const fetchTrailer =  async(id)=>{
-    const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=2ee7df5e9a9849bfb5f047bbde626697&append_to_response=videos`)
-    const data = await res.json()
-    const trailer=  data.videos.results.find(trailer=> trailer.name==='Official Trailer')
-    setTrailerMovie(trailer? trailer : null)
-    setMovieDetails(data)
-   await loadingVal()
-  }
+    const {movieId} = (useParams())
+    const parseMovie = parseInt(movieId)
 
 
-  useEffect(()=>{
-    fetchTrailer(parseMovie)
-  },[parseMovie])
+    const loadingVal = async ()=>{
+        setLoadingg(false)
+    }
+    
+
+    const fetchTrailer =  async(id)=>{
+      const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=2ee7df5e9a9849bfb5f047bbde626697&append_to_response=videos`)
+      const data = await res.json()
+      const trailer=  data.videos.results.find(trailer=> trailer.name==='Official Trailer')
+      setTrailerMovie(trailer? trailer : null)
+      setMovieDetails(data)
+    await loadingVal()
+    }
+
+
+    useEffect(()=>{
+      fetchTrailer(parseMovie)
+    },[parseMovie])
 
 
   return loadingg? <Skeleton className='skeletonPlayer' height={300} width={900}/>: (
