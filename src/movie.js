@@ -3,7 +3,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./components/MovieImage";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signInAnonymously, signOut } from "firebase/auth";
 import SkeletonCard from "./components/skeletonCard";
 
 
@@ -36,7 +36,7 @@ export default function Movie(){
         }
        
     }
-
+    const Auth= auth
 
     const searhMovies= async (e)=>{
         e.preventDefault()
@@ -55,13 +55,17 @@ export default function Movie(){
     }
 
     React.useEffect(()=>{
-        onAuthStateChanged(auth, user=>{
-            if(user) setUser(user.displayName)
+        onAuthStateChanged(Auth, user=>{
+            if(user) {
+                localStorage.setItem("signedIn", "true")
+                setUser(user.displayName)}
             else{
+                localStorage.removeItem('signedIn')
                 setUser(null)
             }
         })
-    }, [user])
+    }, [Auth])
+
 
     React.useEffect(() => {
         if (firstRender.current && inputValue==="") {
@@ -77,8 +81,8 @@ export default function Movie(){
 
   
 
-
-    const userUi = user? `Hi, ${user}`:  <Link to="/login"> Log In</Link>
+    const signedIn = localStorage.getItem('signedIn')
+    const userUi = signedIn? `Hi ${user}`:  <Link to="/login"> Log In</Link>
 
     const userSignOut = async()=>{
         await signOut(auth)

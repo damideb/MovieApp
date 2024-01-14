@@ -4,7 +4,7 @@ import { auth } from "../firebase";
 
 export default function AuthRequired() {
 
-    const user = auth.currentUser
+    const user = localStorage.getItem('signedIn')
     const location = useLocation()
 
  if(!user){
