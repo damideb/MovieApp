@@ -14,30 +14,34 @@ export default function Signin() {
     const navigate = useNavigate()
 
     
-const signUp =()=>{
-    createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
-    .then((userCredential)=>{
-      console.log(userCredential)
-      updateProfile(auth.currentUser,{
-        displayName: userInfo.userName
-      })
-      
-    })
-    .then(()=>{
-      setTimeout(()=>{
-        alert('Account successfully registered')
-        navigate('/login')
-      }, 2000)
-    })
-    .catch((error)=>{
-      console.log(error.code)
-    })
+    const signUp =()=>{
+        createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
+        .then((userCredential)=>{
+          console.log(userCredential)
+          updateProfile(auth.currentUser,{
+            displayName: userInfo.userName
+          })
+          
+        })
+        .then(()=>{
+          setTimeout(()=>{
+            alert('Account successfully registered')
+            navigate('/login')
+          }, 2000)
+        })
+        .catch((error)=>{
+          console.log(error.code)
+        })
+    
+    }
 
-      
-}
+    const back = ()=>{
+      navigate(-1)
+    }
 
     return (
       <>
+                <h3 onClick={back} className='back'>Go back</h3>
         <div className="login-form">
           <div className="login-div">
             <h2 className="login-heading">
@@ -64,7 +68,7 @@ const signUp =()=>{
                 </div>
               </div>
             <div>
-              <div className="flex items-center justify-between">
+              <div>
                   <label htmlFor="password" className="password-label">
                     Username:
                   </label>
@@ -114,7 +118,7 @@ const signUp =()=>{
   
             <p className="register-text">
               Already have an account?{' '}
-             <span className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"> 
+             <span className="span"> 
                 <Link to="/login">Log in</Link>
             </span>
             </p>

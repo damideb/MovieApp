@@ -7,6 +7,7 @@ html {
 }
 a{
   color: #ddd;
+  text-decoration: none;
 }
 body {
   margin: 0;
@@ -188,10 +189,12 @@ min-width: 100%;
 }
 
 .skeletonPlayer{
-transform: translate(20%, 50%);
-
+  transform: translate(20%, 50%);
 }
 
+.back{
+  cursor: pointer;
+}
 
 
 /* login page */
@@ -202,27 +205,30 @@ transform: translate(20%, 50%);
   margin-top: 2em;
 }
 .login-form{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 5rem;
-  min-height: 100%;
+  color: black;
+  width: 55em;
+  padding: 4rem;
+  background-color: #ddd;
+  transform: translate(55%, 8%);
+  height: 90dvh;
+ 
 }
 
 .login-div{
   /* sm:mx-auto sm:w-full sm:max-w-sm */
   margin-bottom: auto;
+ 
 }
 
 .login-heading{
-  margin-top: 2em;
+  margin-top: 0.5em;
   text-align: center;
   font-size: 3rem;
   font-weight: bolder;
 }
 .login-body{
   margin-top: 1.5em;
+  width: 100%;
 
 }
 
@@ -246,20 +252,29 @@ transform: translate(20%, 50%);
   padding:0.8em 1.5em;
   outline: none;
   font-size: 1.5rem;
+  border: none;
 }
+
 .Login-button{
-  width: 100%;
-  margin-top: 2em;
-  font-size: 2rem;
+  width: 24em;
+  margin-top: 3em;
+  font-size: 1.6rem;
   border-radius: 20px;
+ border: none;
   cursor: pointer;
   padding: 0.3em;
-  background-color: #ddd;
+  background-color: #5d5c5cd0;
 }
 
 .register-text{
   text-align: center;
   font-size: 1.3rem;
+}
+
+.span a{
+  color: black;
+  font-weight: bolder;
+  font-size: 1.4rem;
 }
 
 @media (min-width:786px){

@@ -23,8 +23,13 @@ export default function Signin() {
         console.log(error.code)
       })
     }
+
+    const back = ()=>{
+      navigate(-1)
+    }
     return (
       <>
+        <h3 onClick={back} className='back'>Go back</h3>
         <div className="login-form">
           <div className="login-div">
             {
@@ -86,7 +91,7 @@ export default function Signin() {
   
             <p className="register-text">
               Not a member?{' '}
-             <span className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"> 
+             <span className="span"> 
                 <Link to="/signup">Register here</Link>
             </span>
             </p>
