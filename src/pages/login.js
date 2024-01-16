@@ -13,7 +13,6 @@ export default function Signin() {
     
     const from = location.state?.from || '/'
     
-  
     const login = ()=>{
       signInWithEmailAndPassword(auth, useremail, userPassword)
       .then(()=>{
@@ -27,6 +26,7 @@ export default function Signin() {
     const back = ()=>{
       navigate(-1)
     }
+    
     return (
       <>
         <h3 onClick={back} className='back'>Go back</h3>

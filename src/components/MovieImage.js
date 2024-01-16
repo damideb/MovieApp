@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 
 export default function MovieImage({movie, setmovie}) {
+    
     const enter=(movie)=>{
         setmovie(movie)
     }
