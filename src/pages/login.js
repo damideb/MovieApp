@@ -27,6 +27,12 @@ export default function Signin() {
       navigate(-1)
     }
     
+    let disable= true
+    if(userPassword && useremail !==""){
+      disable= false
+    }
+    
+   
     return (
       <>
         <h3 onClick={back} className='back'>Go back</h3>
@@ -83,6 +89,8 @@ export default function Signin() {
                   type="submit"
                   className="Login-button"
                   onClick={login}
+                  disabled={disable}
+                  
                 >
                   Log in
                 </button>

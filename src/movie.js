@@ -3,7 +3,7 @@ import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./components/MovieImage";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
-import { onAuthStateChanged, signInAnonymously, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import SkeletonCard from "./components/skeletonCard";
 
 
@@ -89,13 +89,6 @@ export default function Movie(){
         setOpen(false)
     }
 
-    const styles= {
-        fontSize: '5rem',
-        width:"100%",
-        margin:"0 0.3em",
-        color:"#ddd",
-        cursor:"pointer", 
-    }
 
     return loading? <SkeletonCard cards={12}/> : (
         <>
@@ -103,7 +96,8 @@ export default function Movie(){
          
             <div className="icons">
                 <div className="LogoutProfile">
-                    <FaRegCircleUser style={styles}
+                    <FaRegCircleUser
+                        className="profileIcon"
                         onMouseEnter={()=>setOpen(true)}
                     />
                     {(open && user) && <ul>
