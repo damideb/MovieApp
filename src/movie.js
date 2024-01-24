@@ -68,15 +68,11 @@ export default function Movie(){
 
 
     React.useEffect(() => {
+
         if (firstRender.current && inputValue==="") {
             fetchMovie()
-            
-           
         } 
-       return()=>{
-        firstRender.current= false
-        
-       }
+     
     }, [inputValue])
 
   
@@ -93,22 +89,24 @@ export default function Movie(){
     return loading? <SkeletonCard cards={12}/> : (
         <>
             <h1 className="title">Movie App</h1>
-         
+ 
             <div className="icons">
-                <div className="LogoutProfile">
-                    <FaRegCircleUser
-                        className="profileIcon"
-                        onMouseEnter={()=>setOpen(true)}
-                    />
-                    {(open && user) && <ul>
-                        <li className="logout">
-                            <h2 onClick={userSignOut}>LogOut</h2>
-                        </li>
-                    </ul>}
+                <div className="profile">
+                    <div className="LogoutProfile">
+                            <FaRegCircleUser
+                                className="profileIcon"
+                                onMouseEnter={()=>setOpen(true)}
+                            />
+                            {(open && user) && <ul>
+                                <li className="logout">
+                                    <h2 onClick={userSignOut}>LogOut</h2>
+                                </li>
+                            </ul>}
                     </div>
-                <h2 className="loginLink">
-                    {userUi}
-                </h2>
+                    <h2 className="loginLink">
+                            {userUi}
+                     </h2>
+                </div>
                 <form onSubmit={searhMovies}>
                     <input type="search" className="input" name="query" placeholder="i.e. Little Mermaid"
                     value={inputValue}

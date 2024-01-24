@@ -23,10 +23,6 @@ export default function Signin() {
       })
     }
 
-    const back = ()=>{
-      navigate(-1)
-    }
-    
     let disable= true
     if(userPassword && useremail !==""){
       disable= false
@@ -34,8 +30,7 @@ export default function Signin() {
     
    
     return (
-      <>
-        <h3 onClick={back} className='back'>Go back</h3>
+      <div className="auth">
         <div className="login-form">
           <div className="login-div">
             {
@@ -105,7 +100,7 @@ export default function Signin() {
             </p>
           </div>
         </div>
-      </>
+      </div>
     )
   }
   
