@@ -56,15 +56,14 @@ export default function MoviePlayer() {
                 <h3 className="card--title">{movieDetails.title}</h3>
                 <YouTube
                     videoId={trailerMovie.key}
-                    
                     className='youtube'
                     opts={{
-                      width:"90%" 
+                      width: '90%'
                     }}
                 /> 
                 <div className="card">
-                  <p><small>RELEASE DATE: {movieDetails.release_date}</small></p>
-                  <p><small>RATING: {movieDetails.vote_average}</small></p>
+                  <p className='movieDetails'>RELEASE DATE: <small>{movieDetails.release_date}</small></p>
+                  <p  className='movieDetails'> RATING: <small> {movieDetails.vote_average}</small></p>
                   <p className="card--desc">{movieDetails.overview}</p>
                 </div>
             </div>

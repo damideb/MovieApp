@@ -89,7 +89,6 @@ export default function Movie(){
     return loading? <SkeletonCard cards={12}/> : (
         <>
             <h1 className="title">Movie App</h1>
- 
             <div className="icons">
                 <div className="profile">
                     <div className="LogoutProfile">

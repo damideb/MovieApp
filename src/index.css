@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poiret+One&family=VT323&family=Sevillana&display=swap');
 html {
   font-size: 10px;
  
@@ -16,6 +17,8 @@ body {
   padding: 0;
   background-color: rgb(8, 8, 8);
   color: whitesmoke;
+  font-family: 'Poiret One', cursive;
+
 }
 
 p {
@@ -32,35 +35,43 @@ small {
 }
 
 .title {
-  font-size: 3.5rem;
+  font-weight: light;
+  font-size: 4rem;
   text-align: center;
   color: #ddd;
   margin: 0;
+  font-family: 'VT323', cursive;
+  letter-spacing: 3px;
 }
 
 .profile{
   margin: 0;
-  position: relative;
+  display: flex;
+  /* gap: 2em; */
 }
 
 .profileIcon{
   margin: 0;
   font-size: 5rem;
-  position: absolute;
-  bottom: 0;
+  /* position: absolute; */
+  bottom: 0em;
   color:#ddd;
-   cursor:pointer;
+  cursor:pointer;
 }
 
 .logout{
   display:none;  
 }
-
+.loginLink{
+  font-size: 2rem;
+padding-top: 1em; 
+margin-left: 1em; 
+}
 
 .LogoutProfile:hover .logout{
   display: block;
   position: absolute;
-  top: 5.2em;
+  top: 5em;
   left: 0;
   font-size: 1rem;
   letter-spacing:0.8px;
@@ -75,9 +86,6 @@ small {
   flex-wrap: wrap;
 }
 
-.profile{
-  display: flex;
-}
 
 .LogoutProfile{
   display: block;
@@ -96,13 +104,7 @@ form{
   margin-top: 1em;
 }
 
-.loginLink{
-  font-size: 2rem;
-  margin-left: 1em;
-padding-top: 1em;
 
-  
-}
 
 h2{
   margin: 0;
@@ -115,7 +117,6 @@ h2{
   line-height: 2rem;
   border-radius: 10px 0;
   border: 1px solid #ddd;
- 
   outline: none;
   padding: 0.4em;
 }
@@ -129,6 +130,8 @@ h2{
   border-radius: 0 10px;
   font-size: 1rem;
   cursor: pointer;
+  font-family: 'Poiret One';
+  font-weight: bolder;
 }
 
 .all-card {
@@ -202,14 +205,18 @@ h2{
   min-height: 100%;
   min-width: 100%;
   object-fit: fill;
+ 
 }
 
 .skeletonPlayer{
-  transform: translate(20%, 50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .back{
   cursor: pointer;
+  margin-top: 5em;
 }
 
 
@@ -227,6 +234,11 @@ h2{
   font-size: 1.4rem;
   letter-spacing: 0.7px;
   margin-top: 2em;
+}
+.error{
+  color: orangered;
+  font-weight: bolder;
+  font-size: 1.7rem;
 }
 .login-form{
   color: black;
@@ -265,6 +277,7 @@ h2{
   display: block;
   font-size: 1.5rem;
   margin-top: 2em;
+  font-weight: bolder;
 }
 
 .input-div{
@@ -279,6 +292,18 @@ h2{
   outline: none;
   font-size: 1.5rem;
   border: none;
+}
+
+.password-div{
+  position: relative;
+}
+
+.eyeIcon{
+  position: absolute;
+  bottom: 0.5em;
+  right: 0em ;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .Login-button{
@@ -308,6 +333,16 @@ h2{
   font-weight: bolder;
   font-size: 1.4rem;
 }
+
+.movieDetails{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+
+.card--desc{
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
 @media only screen and (min-width: 350px) and (max-width: 600px) {
  
 .title {
@@ -317,6 +352,7 @@ h2{
 .profile{
   margin: 0;
   position: relative;
+  gap: 1em;
 }
 .profileIcon{
   margin: 0;
@@ -344,8 +380,7 @@ h2{
 
 .loginLink{
     font-size: 1.7rem;
-    margin-bottom: 0;
-    padding-bottom:0;
+    margin-left: 2em;
     padding-top: 30px;
 }
 

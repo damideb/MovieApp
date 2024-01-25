@@ -2,11 +2,14 @@ import { useState} from "react"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../firebase"
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 export default function Signin() {
 
     const[useremail, setUseremail] = useState('')
     const [userPassword, setUserpassword] = useState('')
+    const[errorMessage, setErrorMessage] = useState('')
+    const [show, setShow] = useState(false)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -16,10 +19,12 @@ export default function Signin() {
     const login = ()=>{
       signInWithEmailAndPassword(auth, useremail, userPassword)
       .then(()=>{
+        setErrorMessage('')
         navigate(from, {replace: true})
       })
       .catch((error)=>{
         console.log(error.code)
+        setErrorMessage('Invalid credentials')
       })
     }
 
@@ -28,6 +33,9 @@ export default function Signin() {
       disable= false
     }
     
+    const showPassword = ()=>{
+      setShow(prev=>!prev)
+    }
    
     return (
       <div className="auth">
@@ -66,30 +74,33 @@ export default function Signin() {
                     Password:
                   </label>
                 </div>
-                <div className="mt-2">
+                <div className="password-div">
                   <input
                     id="password"
                     name="password"
-                    type="password"
+                    type={show? 'text': 'password'}
                     onChange={(e)=>setUserpassword(e.target.value)}
                     autoComplete="current-password"
                     required
                     className="input-password"
-                  />
+                  /> 
+                  <span>  
+                    { show? <FaRegEye className="eyeIcon" onClick={showPassword}/> : <FaRegEyeSlash className="eyeIcon" onClick={showPassword}/>}
+                  </span>
+                 
                 </div>
               </div>
-  
-              <div>
+              <p className="error">{errorMessage}</p>
                 <button
                   type="submit"
                   className="Login-button"
                   onClick={login}
                   disabled={disable}
-                  
+
                 >
                   Log in
                 </button>
-              </div>
+              
             </div>
   
             <p className="register-text">
