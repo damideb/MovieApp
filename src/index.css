@@ -179,7 +179,7 @@ h2{
 }
 
 .selected{
-  padding:6em 2em;
+  padding:6em 4em;
 }
 .selected-title,.selected-overview{
  padding: 1rem;
@@ -371,7 +371,7 @@ h2{
 
 .all-card--title {
   margin-bottom: 0rem;
-  margin-left: 3em;
+  margin-left: 2em;
 }
 
 .card--title {
@@ -405,7 +405,7 @@ h2{
 }
 
 .button {
-    height: 100%;
+    height: 105%;
     padding: 2px;
     font-size: 1rem;
     margin: -0.1em;
@@ -483,6 +483,10 @@ h2{
 }
 .youtube{
  width: 100%; 
+}
+
+.eyeIcon{
+  right: 0.7em;
 }
  
 }
