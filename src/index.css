@@ -122,16 +122,17 @@ h2{
 }
 
 .button {
-  height: 105%;
+  height: 103%;
   background-color:#ddd ;
   color: black;
   padding: 3px;
-  border: 1px solid rgba(0,0,0,0.75);
+  border: none;
   border-radius: 0 10px;
   font-size: 1rem;
   cursor: pointer;
   font-family: 'Poiret One';
   font-weight: bolder;
+  
 }
 
 .all-card {
@@ -405,10 +406,8 @@ h2{
 }
 
 .button {
-    height: 105%;
     padding: 2px;
     font-size: 1rem;
-    margin: -0.1em;
 }
 
 
