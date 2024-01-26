@@ -23,7 +23,7 @@ export default function Movie(){
     const fetchMovie = async()=>{
         
         try{
-            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US`)
+            const res = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&page=1`)
             const data= await res.json()
             setallMovies(data.results)
             setSelectedMovie(data.results[0])

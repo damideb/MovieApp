@@ -63,9 +63,10 @@ export default function MoviePlayer() {
                       width: '90%'
                     }}
                 /> 
+                
                 <div className="card">
-                  <p className='movieDetails'>RELEASE DATE: <small>{movieDetails.release_date}</small></p>
-                  <p  className='movieDetails'> RATING: <small> {movieDetails.vote_average}</small></p>
+                  <p className='movieDetails'><strong>RELEASE DATE: </strong><small>{movieDetails.release_date}</small></p>
+                  <p  className='movieDetails'><strong> RATING:</strong> <small> {movieDetails.vote_average}</small></p>
                   <p className="card--desc">{movieDetails.overview}</p>
                 </div>
             </div>

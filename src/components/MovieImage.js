@@ -13,6 +13,7 @@ export default function MovieImage({movie, setmovie}) {
                 <img className="all-card--image"
                 onMouseOver={()=>enter(movie)}
                     width='90%'
+                    height='90%'
                     src={`https://image.tmdb.org/t/p/w185_and_h278_bestv2/${movie.poster_path}`}
                     alt={movie.title + ' poster'}
                     />
