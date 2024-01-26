@@ -408,6 +408,7 @@ h2{
 .button {
     padding: 2px;
     font-size: 1rem;
+    margin: -0.1em;
 }
 
 
