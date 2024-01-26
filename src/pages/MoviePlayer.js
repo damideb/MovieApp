@@ -26,8 +26,10 @@ export default function MoviePlayer() {
       const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=2ee7df5e9a9849bfb5f047bbde626697&append_to_response=videos`)
       try{
         const data = await res.json()
-        const trailer=  data.videos.results.find(trailer=> trailer.name==='Official Trailer')
-        setTrailerMovie(trailer? trailer : null)
+        const video = data.videos.results
+        const trailer=  video.find(trailer=> trailer.name==='Official Trailer')
+        console.log(data.videos.results)
+        setTrailerMovie(trailer? trailer : video[0])
         setMovieDetails(data)
       await loadingVal()
       }
