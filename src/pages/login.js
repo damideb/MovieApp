@@ -10,6 +10,7 @@ export default function Signin() {
     const [userPassword, setUserpassword] = useState('')
     const[errorMessage, setErrorMessage] = useState('')
     const [show, setShow] = useState(false)
+    const[loggingIn, setLogginIn] = useState(false)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -17,11 +18,20 @@ export default function Signin() {
     const from = location.state?.from || '/'
     
     const login = ()=>{
+      
       signInWithEmailAndPassword(auth, useremail, userPassword)
       .then(()=>{
+        setLogginIn(true)
         setErrorMessage('')
-        navigate(from, {replace: true})
       })
+
+      .then(()=>{
+        setTimeout(()=>{
+          navigate(from, {replace: true})
+        }, 2000)
+      })
+      
+      
       .catch((error)=>{
         console.log(error.code)
         setErrorMessage('Invalid credentials')
@@ -98,11 +108,11 @@ export default function Signin() {
                   disabled={disable}
 
                 >
-                  Log in
+                 {loggingIn && <span className="spinner"></span> }Log in  
                 </button>
               
             </div>
-  
+           
             <p className="register-text">
               Not a member?{' '}
              <span className="span"> 

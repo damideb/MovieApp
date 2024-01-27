@@ -14,6 +14,7 @@ export default function Signin() {
 
     const[errorMessage, setErrorMessage] = useState('')
     const[show, setShow] = useState('')
+    const[loggingIn, setLogginIn] = useState(false)
 
     const navigate = useNavigate()
 
@@ -21,15 +22,14 @@ export default function Signin() {
     const signUp =()=>{
         createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((userCredential)=>{
-          console.log(userCredential)
           updateProfile(auth.currentUser,{
             displayName: userInfo.userName
           })
+          setLogginIn(true)
           
         })
         .then(()=>{
           setTimeout(()=>{
-            alert('Account successfully registered')
             navigate('/login')
           }, 2000)
           setErrorMessage('')
@@ -133,7 +133,7 @@ export default function Signin() {
                     onClick={signUp}
                     disabled={disable}
                   >
-                    Sign Up
+                   {loggingIn && <span className="spinner"></span> } Sign Up
                   </button>
               </div>
     

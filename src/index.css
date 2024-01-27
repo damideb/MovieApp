@@ -294,6 +294,31 @@ h2{
   border: none;
 }
 
+.spinner{
+  width:0.9em;
+  height: 0.9em;
+  margin-right: 0.5em;
+  margin-top: 0.2em;
+  display: inline-block;
+  border-bottom: 3.2px  solid white;
+  border-left: 3.2px  solid white ;
+  color: white;
+  border-radius: 50%;
+  -webkit-animation: spin 0.7s linear infinite reverse both;
+  animation: spin 0.7s linear infinite reverse both;
+  -ms-animation:spin 075s linear infinite reverse both;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .password-div{
   position: relative;
 }
