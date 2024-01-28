@@ -18,7 +18,6 @@ export default function Signin() {
 
     const navigate = useNavigate()
 
-    
     const signUp =()=>{
         createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password)
         .then((userCredential)=>{
@@ -46,8 +45,6 @@ export default function Signin() {
           }
           console.log(error.code)
         })
-       
-    
     }
 
     let disable= true
