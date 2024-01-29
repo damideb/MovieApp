@@ -112,12 +112,11 @@ export default function Signin() {
                 </button>
               
             </div>
-           
             <p className="register-text">
-              Not a member?{' '}
-             <span className="span"> 
-                <Link to="/signup">Register here</Link>
-            </span>
+              Dont't have an account?{' '}
+              <span className="span"> 
+                  <Link to="/signup">Register here</Link>
+              </span>
             </p>
           </div>
         </div>
