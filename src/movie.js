@@ -10,6 +10,9 @@ import TopRated from "./components/TopRated";
 import { CiSearch } from "react-icons/ci";
 import Avatar from '@mui/material/Avatar';
 import { RiArrowRightSLine, RiArrowLeftSLine  } from "react-icons/ri";
+import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import 'swiper/css';
+
 
 
 export default function Movie(){
@@ -22,9 +25,11 @@ export default function Movie(){
     const [loading, setLoading] = useState(true)
     const [shows, setShows] = useState([])
     const [topRated, setTopRated] = useState([])
-    const [showIcon, setShowIcon] = useState(false)
+    const [showIcon, setShowIcon] = useState({})
    
     const key = process.env.REACT_APP_API_KEY
+
+    const swiper = useSwiper();
 
     const firstRender= useRef(true)
 
@@ -102,7 +107,20 @@ export default function Movie(){
         setOpen(false)
     }
 
+    const showtoggleIcon = (id)=>{
+        setShowIcon({
+            ...showIcon,
+            [id]: true
+        })
+    }
 
+    const hideIcon= (id)=>{
+        setShowIcon({
+            ...showIcon,
+            [id]: false
+        })
+    }
+console.log(showIcon)
     return loading? <SkeletonCard cards={12}/> : (
         <>
            
@@ -163,8 +181,9 @@ export default function Movie(){
                 <div className="all-container">
                     <div>
                         <h1 className="movieHeading">Movie</h1>
-                        <div className="container" onMouseOver={()=>setShowIcon(true)} onMouseOut={()=> setShowIcon(false)}>
-                        <div> <RiArrowLeftSLine  className={ showIcon? "rightIcon": "hide"}/></div>
+                        
+                        <div className="container" onMouseOver={()=>showtoggleIcon(1)} onMouseOut={()=> hideIcon(1)}>
+                        <div> <RiArrowLeftSLine  className={ showIcon[1]? "rightIcon": "hide"}/></div>
                     <div className="all-card-list">
                         {
                             allMovies.filter(movie=> movie.poster_path).map((movie, index)=>{
@@ -175,14 +194,14 @@ export default function Movie(){
                             })
                         }
                     </div>
-                    <div> <RiArrowRightSLine className={ showIcon? "rightIcon": "hide"}/></div>
+                    <div> <RiArrowRightSLine className={ showIcon[1]? "rightIcon": "hide"}/></div>
                     </div>
                     </div>
 
                     <div>
                         <h1 className="movieHeading">TV Shows</h1>
-                        <div className="container" onMouseOver={()=>setShowIcon(true)} onMouseOut={()=> setShowIcon(false)}>
-                        <div> <RiArrowLeftSLine className={ showIcon? "rightIcon": "hide"}/></div>
+                        <div className="container" onMouseOver={()=>showtoggleIcon(2)} onMouseOut={()=>hideIcon(2)}>
+                        <div> <RiArrowLeftSLine className={ showIcon[2]? "rightIcon": "hide"}/></div>
                         <div className="all-card-list">
                             {
                                 shows.filter(show=> show.poster_path).map((show, index)=>{
@@ -192,14 +211,14 @@ export default function Movie(){
                                 })
                             }
                         </div>
-                        <div> <RiArrowRightSLine className={ showIcon? "rightIcon": "hide"}/></div>
+                        <div> <RiArrowRightSLine className={ showIcon[2]? "rightIcon": "hide"}/></div>
                         </div>
                     </div>
 
                     <div>
                         <h1 className="movieHeading">Top Rated</h1>
-                        <div className="container" onMouseOver={()=>setShowIcon(true)} onMouseOut={()=> setShowIcon(false)}>
-                        <div> <RiArrowLeftSLine  className={ showIcon? "rightIcon": "hide"}/></div>
+                        <div className="container" onMouseOver={()=>showtoggleIcon(3)} onMouseOut={()=>hideIcon(3)}>
+                        <div> <RiArrowLeftSLine  className={ showIcon[3]? "rightIcon": "hide"}/></div>
                         <div className="all-card-list">
                             {
                                topRated.filter(show=> show.poster_path).map((show, index)=>{
@@ -209,7 +228,7 @@ export default function Movie(){
                                 })
                             }
                             </div>
-                            <div> <RiArrowRightSLine  className={ showIcon? "rightIcon": "hide"}/></div>
+                            <div> <RiArrowRightSLine  className={ showIcon[3]? "rightIcon": "hide"}/></div>
                         </div>
                     </div>
             </div>

@@ -168,8 +168,13 @@ h2{
 .all-card {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
   margin-bottom: 2rem;
- 
- 
+  transition: all 250ms ease-in-out;
+
+}
+
+.all-card:hover{
+  transform: scale(1.2);
+  margin: 0 20px;
 }
 
 .all-card--title {
@@ -197,18 +202,15 @@ h2{
   object-position: right 1em top -20px;
   max-width: 100%;
   cursor: pointer;
-  transition: all 250ms ease-in-out;
+
 }
 
-.all-card--image:hover{
-  transform: scale( 1.1);
-  margin: 0 0.5em;  
-}
 
 .container{
   display: flex;
   justify-content: center;
   overflow: hidden;
+  margin-bottom: 0em;
 }
 
 .rightIcon{
@@ -227,7 +229,7 @@ h2{
   justify-content: center;
   color: white;
   transition: all 150ms ease-in-out;
-  position: relative;
+  position: absolute;
 }
 .hide{
   display: none;
@@ -236,7 +238,7 @@ h2{
 
 .rightIcon:hover,
 .rightIcon:focus  {
-  transform: scale(1.1);
+  transform: scaleY(1.1);
 }
 
 .all-card-list {
@@ -246,7 +248,7 @@ h2{
   overflow-x: scroll;
   gap: 0.5em;
   margin-top: 2rem;
-  margin-left: -1.5em;
+  margin-left: 0em;
   margin-right: -2em;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
