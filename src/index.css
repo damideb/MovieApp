@@ -18,6 +18,7 @@ body {
   background-color: rgb(8, 8, 8);
   color: whitesmoke;
   font-family: 'Poiret One', cursive;
+  position: relative;
 
 }
 
@@ -166,16 +167,16 @@ h2{
 }
 
 .all-card {
-  box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
+  /* box-shadow: 1px 1px 5px rgba(0,0,0,0.25); */
   margin-bottom: 2rem;
   transition: all 250ms ease-in-out;
 
 }
 
-.all-card:hover{
+/* .all-card:hover{
   transform: scale(1.2);
   margin: 0 20px;
-}
+} */
 
 .all-card--title {
   margin-top: 0.2em;
@@ -206,54 +207,70 @@ h2{
 }
 
 
-.container{
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  margin-bottom: 0em;
-}
 
-.rightIcon{
+
+.swiper-button-next-unique, .swiper-button-next-unique1, .swiper-button-next-unique2{
   border: none;
   border-radius: 1rem;
   flex-grow: 0;
   flex-shrink: 0;
-  background-color: rgba(255, 255, 255, 0.304);
+  background-color: rgba(255, 255, 255, 0.409);
   z-index: 10;
-  margin: 1.5em 0 0 0;
-  width: 3rem;
+  width: 3.3rem;
   cursor: pointer;
   font-size: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   color: white;
   transition: all 150ms ease-in-out;
   position: absolute;
+  right: 0em;
+  margin-top:-1em;
 }
-.hide{
+.swiper-button-prev-unique, .swiper-button-prev-unique1, .swiper-button-prev-unique2{
+  border: none;
+  border-radius: 1rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  background-color: rgba(255, 255, 255, 0.409);
+  z-index: 10;
+  width: 3.3rem;
+  cursor: pointer;
+  font-size: 5rem;
+  color: white;
+  transition: all 150ms ease-in-out;
+  position: absolute;
+  left: 0em;
+  margin-top:-1em;
+}
+#hide{
   display: none;
 }
-
-
-.rightIcon:hover,
-.rightIcon:focus  {
-  transform: scaleY(1.1);
+.swiperParent{
+  position: relative;
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
-.all-card-list {
+.swiper{
   width: 100%;
-  display:flex;
-  flex-grow: 1;
-  overflow-x: scroll;
-  gap: 0.5em;
-  margin-top: 2rem;
-  margin-left: 0em;
-  margin-right: -2em;
+  height: 100%;
+  overflow-x: scroll !important;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;
+  position: relative;
+  margin-bottom: 2em;
 }
 
+.swiper-slide {  
+  display:flex;
+  gap: 0.2em;
+  margin-left: 1em;
+  transition: all 250ms ease-in-out;
+}
+.swiper-slide:hover{
+  margin: 0 2em;
+  transform: scale(1.1);
+}
 .all-card-list::-webkit-scrollbar { 
   width: 0;
   height: 0;
@@ -460,53 +477,65 @@ h2{
   font-size: 1.5rem;
   font-weight: bolder;
 }
+
 @media only screen and (min-width: 350px) and (max-width: 600px) {
- 
+ .icons{
+  padding: 0em;
+ }
 .title {
-  font-size: 2.5rem;
+  font-size: 2em;
 
 }
-.profile{
+
+.searchIcon{
   margin: 0;
-  position: relative;
-  gap: 1em;
+  font-size: 2rem;
 }
+
+.searchProfile-container{
+  gap: 3em;
+  margin:0 1em;
+}
+
 .profileIcon{
   margin: 0;
-  font-size: 4rem;
+  font-size: 3.5rem;
   position: absolute;
   bottom: 0;
+
+}
+
+.img-div{
+  width: 20em;
 }
 
 .all-card--image {
-  height: 85%;
-  object-fit: contain;
-}
+   aspect-ratio: 16/14;
+ 
+ }
+
+
 .all-card {
   margin-bottom: 0rem;
  
 }
 
 .all-card--title {
-  margin-bottom: 0rem;
-  margin-left: 2em;
+  /* margin-bottom: 0rem;
+  margin-left: 2em; */
 }
 
 .card--title {
   font-size: 3rem;
 }
 
+
 .LogoutProfile:hover .logout{
-  font-size: 1rem;
+  font-size: 0.9rem;
   letter-spacing:0.8px;
-  padding: 0.5em 0.3em;
-  top: 5em;
+  padding: 0.5em 0.1em;
+  top: 5.5em;
 }
-
-.icons{
-  margin-top: 1.5em;
-}
-
 
 
 .input {
@@ -518,8 +547,8 @@ h2{
 
 .loginLink{
     font-size: 1.7rem;
-    margin-left: 2em;
-    padding-top: 30px;
+    margin-left: 2.1em;
+   
 }
 
 .button {
@@ -530,7 +559,7 @@ h2{
 
 
 .selected{
-    padding:2.5em 1em;
+    padding:0.5em 1em;
 }
 
 .selected-overview{
@@ -606,5 +635,33 @@ h2{
   right: 0.7em;
 }
  
+}
+
+@media screen and (max-width: 485px){
+
+  .swiper-button-next-unique, .swiper-button-next-unique1, .swiper-button-next-unique2{
+    display: none;
+  }
+  .swiper-button-prev-unique, .swiper-button-prev-unique1, .swiper-button-prev-unique2{
+   display: none;
+  }
+
+  
+.img-div{
+  width: 15em;
+}
+
+.all-card--image {
+   aspect-ratio: 11/13;
+   object-position: right 1em top -0px;
+ }
+
+ .swiper{
+  margin-bottom: 1em;
+}
+
+.swiper-slide {  
+  margin-left: 0.5em;
+}
 }
 

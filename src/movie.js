@@ -10,8 +10,12 @@ import TopRated from "./components/TopRated";
 import { CiSearch } from "react-icons/ci";
 import Avatar from '@mui/material/Avatar';
 import { RiArrowRightSLine, RiArrowLeftSLine  } from "react-icons/ri";
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper,SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
 
 
 
@@ -26,10 +30,8 @@ export default function Movie(){
     const [shows, setShows] = useState([])
     const [topRated, setTopRated] = useState([])
     const [showIcon, setShowIcon] = useState({})
-   
-    const key = process.env.REACT_APP_API_KEY
 
-    const swiper = useSwiper();
+    const key = process.env.REACT_APP_API_KEY
 
     const firstRender= useRef(true)
 
@@ -55,9 +57,6 @@ export default function Movie(){
         }
        
     }
-
-  
-
     const Auth= auth
 
     const searhMovies= async (e)=>{
@@ -120,7 +119,8 @@ export default function Movie(){
             [id]: false
         })
     }
-console.log(showIcon)
+
+
     return loading? <SkeletonCard cards={12}/> : (
         <>
            
@@ -151,9 +151,9 @@ console.log(showIcon)
                                } */}
                     <div className="profile">
                         <div className="LogoutProfile">
-                              { user? <Avatar 
+                              { signedIn? <Avatar 
                                 variant="square"
-                                sx={{ bgcolor: 'gray', color:'black', width:'2.5em', height:'1.5em', fontSize:"3rem", marginTop:'0.2em' }}
+                                sx={{ bgcolor: 'gray', color:'black', width:{sm:'2em', md:'2em', lg:'2.5em'}, height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
                                 className="profileIcon">{user.charAt(0).toUpperCase()}</Avatar>: <FaRegCircleUser
                                     className="profileIcon"
                                     onMouseEnter={()=>setOpen(true)}
@@ -170,68 +170,189 @@ console.log(showIcon)
                     </div>
                 </div>      
             </div>
-              <div className="hero" style={{background: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}}>
+
+            <div className="hero" style={{background: `url(https://image.tmdb.org/t/p/original${selectedMovie.backdrop_path})`}}>
                             <div className="selected">
                             <h1 className="selected-title">{selectedMovie.title}</h1>
                     <p className="selected-overview">{selectedMovie.overview}</p>
                             </div>
 
-                </div>
+            </div>
             
                 <div className="all-container">
                     <div>
                         <h1 className="movieHeading">Movie</h1>
-                        
-                        <div className="container" onMouseOver={()=>showtoggleIcon(1)} onMouseOut={()=> hideIcon(1)}>
-                        <div> <RiArrowLeftSLine  className={ showIcon[1]? "rightIcon": "hide"}/></div>
-                    <div className="all-card-list">
-                        {
-                            allMovies.filter(movie=> movie.poster_path).map((movie, index)=>{
-                            return  <MovieImage key={movie.id}
-                                        movie={movie}
-                                        setmovie= {setSelectedMovie}
-                                        />
-                            })
-                        }
-                    </div>
-                    <div> <RiArrowRightSLine className={ showIcon[1]? "rightIcon": "hide"}/></div>
+                        <div className="swiperParent" onMouseOver={()=>showtoggleIcon(1)} onMouseOut={()=>hideIcon(1)} >
+                            <div  className="swiper-button-prev-unique" id={!showIcon[1]? 'hide' : "" }><RiArrowLeftSLine /></div>
+                            <Swiper
+                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                spaceBetween={20}
+                                slidesPerView={4.3}
+                                slidesPerGroup={4}
+                                navigation={ 
+                                    {nextEl: '.swiper-button-next-unique',
+                                prevEl: '.swiper-button-prev-unique'}}
+                                onSwiper={(swiper) => console.log(swiper)}
+                                onSlideChange={() => console.log('slide change')}
+                                breakpoints={{
+                                    0:{
+                                        slidesPerView: 2.4,
+                                      spaceBetween: 15,
+                                    },
+                                    520:{
+                                        slidesPerView: 2.3,
+                                        spaceBetween: 10,
+                                    },
+                                    675: {
+                                      slidesPerView: 2.2,
+                                      spaceBetween: 15,
+                                    },
+                                    768: {
+                                      slidesPerView: 2.5,
+                                      spaceBetween: 15,
+                                    },
+                                    1024: {
+                                      slidesPerView: 4.3,
+                                      spaceBetween: 17,
+                                    },
+                                    1200: {
+                                        slidesPerView: 4.3,
+                                        spaceBetween: 10
+                                      },
+                                  }}
+                                 
+                            >
+                            
+                                {/* <div className="all-card-list" ref={sliderRef} >  */}
+                                {
+                                    allMovies.filter(movie=> movie.poster_path).map((movie, index)=>{
+                                    return <SwiperSlide><MovieImage key={movie.id}
+                                                movie={movie}
+                                                setmovie= {setSelectedMovie}
+                                                />
+                                                </SwiperSlide>
+                                        
+                                    })
+                                }
+                                {/* </div>  */}
+                            </Swiper>
+                            <div className="swiper-button-next-unique" id={!showIcon[1]? 'hide' : "" }> <RiArrowRightSLine  /></div>
                     </div>
                     </div>
 
                     <div>
                         <h1 className="movieHeading">TV Shows</h1>
-                        <div className="container" onMouseOver={()=>showtoggleIcon(2)} onMouseOut={()=>hideIcon(2)}>
-                        <div> <RiArrowLeftSLine className={ showIcon[2]? "rightIcon": "hide"}/></div>
-                        <div className="all-card-list">
-                            {
-                                shows.filter(show=> show.poster_path).map((show, index)=>{
-                                return  <TvShows key={show.id}
-                                            show={show}
-                                            />
-                                })
-                            }
-                        </div>
-                        <div> <RiArrowRightSLine className={ showIcon[2]? "rightIcon": "hide"}/></div>
-                        </div>
+                        <div className="swiperParent"  onMouseOver={()=>showtoggleIcon(2)} onMouseOut={()=>hideIcon(2)} >
+                            <div  className="swiper-button-prev-unique1" id={!showIcon[2]? 'hide' : "" }><RiArrowLeftSLine /></div>
+                            <Swiper
+                                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                spaceBetween={20}
+                                slidesPerView={4.3}
+                                slidesPerGroup={4}
+                                navigation={ 
+                                    {nextEl: '.swiper-button-next-unique1',
+                                prevEl: '.swiper-button-prev-unique1'}}
+                                onSwiper={(swiper) => console.log(swiper)}
+                                onSlideChange={() => console.log('slide change')}
+                                breakpoints={{
+                                    0:{
+                                        slidesPerView: 2.4,
+                                      spaceBetween: 15,
+                                    },
+                                    520:{
+                                        slidesPerView: 2.3,
+                                        spaceBetween: 10,
+                                    },
+                                    675: {
+                                      slidesPerView: 2.2,
+                                      spaceBetween: 15,
+                                    },
+                                    768: {
+                                      slidesPerView: 2.5,
+                                      spaceBetween: 30,
+                                    },
+                                    1024: {
+                                      slidesPerView: 4.3,
+                                      spaceBetween: 17,
+                                    },
+                                    1200: {
+                                        slidesPerView: 4.3,
+                                        spaceBetween: 10
+                                      },
+                                  }}
+                            >
+                   
+                                {
+                                    shows.filter(show=> show.poster_path).map((show, index)=>{
+                                    return <SwiperSlide> <TvShows key={show.id}
+                                                show={show}
+                                                />
+                                                </SwiperSlide>
+                                    })
+                                }
+                      
+                            </Swiper>
+                            <div className="swiper-button-next-unique1" id={!showIcon[2]? 'hide' : "" } > <RiArrowRightSLine  /></div>
+                        </div> 
                     </div>
 
                     <div>
                         <h1 className="movieHeading">Top Rated</h1>
-                        <div className="container" onMouseOver={()=>showtoggleIcon(3)} onMouseOut={()=>hideIcon(3)}>
-                        <div> <RiArrowLeftSLine  className={ showIcon[3]? "rightIcon": "hide"}/></div>
-                        <div className="all-card-list">
-                            {
-                               topRated.filter(show=> show.poster_path).map((show, index)=>{
-                                return  <TopRated key={show.id}
-                                            show={show}
-                                            />
-                                })
-                            }
-                            </div>
-                            <div> <RiArrowRightSLine  className={ showIcon[3]? "rightIcon": "hide"}/></div>
+                        <div className="swiperParent"  onMouseOver={()=>showtoggleIcon(3)} onMouseOut={()=>hideIcon(3)}>
+                            <div  className="swiper-button-prev-unique2" id={!showIcon[3]? 'hide' : "" }><RiArrowLeftSLine /></div>
+                                <Swiper
+                                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                                    spaceBetween={15}
+                                    slidesPerView={4.3}
+                                    slidesPerGroup={4}
+                                    navigation={ 
+                                        {nextEl: '.swiper-button-next-unique2',
+                                    prevEl: '.swiper-button-prev-unique2'}}
+                                    onSwiper={(swiper) => console.log(swiper)}
+                                    onSlideChange={() => console.log('slide change')}
+                                    breakpoints={{
+                                        0:{
+                                            slidesPerView: 2.4,
+                                          spaceBetween: 15,
+                                        },
+                                        520:{
+                                            slidesPerView: 2.3,
+                                            spaceBetween: 10,
+                                        },
+                                        675: {
+                                          slidesPerView: 2.2,
+                                          spaceBetween: 15,
+                                        },
+                                        768: {
+                                          slidesPerView: 2.5,
+                                          spaceBetween: 30,
+                                        },
+                                        1024: {
+                                          slidesPerView: 4.3,
+                                          spaceBetween: 17,
+                                        },
+                                        1200: {
+                                            slidesPerView: 4.3,
+                                        spaceBetween: 10
+                                          },
+                                      }}
+                                >
+                            
+                     
+                                    {
+                                    topRated.filter(show=> show.poster_path).map((show, index)=>{
+                                        return  <SwiperSlide><TopRated key={show.id}
+                                                    show={show}
+                                                    />
+                                                    </SwiperSlide>
+                                        })
+                                    }
+                        
+                            </Swiper>
+                            <div className="swiper-button-next-unique2" id={!showIcon[3]? 'hide' : "" } > <RiArrowRightSLine  /></div>
                         </div>
                     </div>
-            </div>
+                </div>
         </>
     )
 }
