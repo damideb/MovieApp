@@ -52,16 +52,24 @@ small {
 }
 
 .searchIcon{
-  margin: 0;
-  font-size: 3rem;
-  bottom: 0em;
+  font-size: 2.5rem;
   color:#ddd;
   cursor:pointer;
+
+}
+.searchIconClose{
+  font-size: 2rem;
+  color:#ddd;
+  cursor:pointer;
+  position: absolute;
+  margin: 0.2em;
+  opacity: 0.5;
 }
 
 .profile{
   margin: 0;
   display: flex;
+  align-items: center;
   /* gap: 2em; */
 }
 
@@ -130,26 +138,33 @@ li{
 
 
 form{
-  height: 4em;
   margin-left: auto;
   margin-top: 1em;
+  display: flex;
+  align-items: center;
+  position: relative;
 }
-
-
 
 h2{
   margin: 0;
 }
 
-
 .input {
-  height: 100%;
+  background: transparent;
+  border-radius: 20px;
   max-width: 18rem;
+  height: 100%;
+  color: white;
   line-height: 2rem;
-  border-radius: 10px 0;
   border: 1px solid #ddd;
   outline: none;
-  padding: 0.4em;
+  padding: 0.5em 2em;
+  transition:all 250ms ease-in ;
+  transition-delay: 100ms;
+}
+
+.input:focus{
+  outline: none;
 }
 
 .button {
@@ -167,7 +182,6 @@ h2{
 }
 
 .all-card {
-  /* box-shadow: 1px 1px 5px rgba(0,0,0,0.25); */
   margin-bottom: 2rem;
   transition: all 250ms ease-in-out;
 
@@ -488,8 +502,8 @@ align-items: center;
 }
 
 .searchIcon{
-  margin: 0;
-  font-size: 2rem;
+  margin-top: 0.3em;
+  font-size: 2.2rem;
 }
 
 .searchProfile-container{
@@ -540,7 +554,7 @@ align-items: center;
 
 .input {
     height: 100%;
-    max-width: 11rem;
+    max-width: 9rem;
     padding: 0 1em;
     
 }

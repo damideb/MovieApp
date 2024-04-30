@@ -1,4 +1,4 @@
-import React,{useRef, useState} from "react";
+import React,{useRef, useState, useEffect} from "react";
 import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./components/MovieImage";
 import { Link } from "react-router-dom";
@@ -13,10 +13,6 @@ import { RiArrowRightSLine, RiArrowLeftSLine  } from "react-icons/ri";
 import { Swiper,SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/scrollbar';
-
 
 
 export default function Movie(){
@@ -30,10 +26,12 @@ export default function Movie(){
     const [shows, setShows] = useState([])
     const [topRated, setTopRated] = useState([])
     const [showIcon, setShowIcon] = useState({})
+    const [openSearch, setOpenSearch] = useState(false)
 
     const key = process.env.REACT_APP_API_KEY
 
     const firstRender= useRef(true)
+    const searchRef =  useRef(null)
 
     const fetchMovie = async()=>{
         
@@ -59,12 +57,12 @@ export default function Movie(){
     }
     const Auth= auth
 
-    const searhMovies= async (e)=>{
-        e.preventDefault()
-        if (inputValue){
+    const searhMovies= async (val)=>{
+        if (val){
+            setInputValue(val)
             try{
                 const res = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${key}&
-                language=en-US&query=${inputValue}&page=2&include_adult=false`)
+                language=en-US&query=${val}&page=2&include_adult=false`)
                 const data = await res.json()
                 const results = data.results
                 if(results.length) setallMovies(results)
@@ -73,9 +71,18 @@ export default function Movie(){
             console.log(error)
             }
         } 
+        else{
+            setInputValue('')
+        }
     }
 
-    React.useEffect(()=>{
+    const handleOutsideClick =(e)=>{
+        if(searchRef.current && !searchRef.current.contains(e.target)){
+            setOpenSearch(false)
+        }
+    }
+
+   useEffect(()=>{
         onAuthStateChanged(Auth, user=>{
             if(user) {
                 localStorage.setItem("signedIn", "true")
@@ -88,16 +95,26 @@ export default function Movie(){
     }, [Auth])
 
 
-    React.useEffect(() => {
-
+   useEffect(() => {
+    firstRender.current=true
         if (firstRender.current && inputValue==="") {
             fetchMovie()
         } 
+
+        return () => {
+          firstRender.current=false
+          };
      
     }, [inputValue])
 
-  
+    useEffect(()=>{
+        document.addEventListener("mousedown", handleOutsideClick);
+        return () => {
+          document.removeEventListener("mousedown", handleOutsideClick);
+        };
+    })
 
+  
     const signedIn = localStorage.getItem('signedIn')
     const userUi = signedIn? `Hi ${user}`:  <Link to="/login"> Log In</Link>
 
@@ -127,46 +144,33 @@ export default function Movie(){
             <div className="icons">
                 <h1 className="title">Movie App</h1>
                 <div className="searchProfile-container">
-                <form onSubmit={searhMovies}>
-                    <CiSearch className="searchIcon"/>
-                        {/* <input type="search" className="input" name="query" placeholder="i.e. Little Mermaid"
-                        value={inputValue}
-                        onChange={(e)=>{
-                            setInputValue(e.target.value)
-                        }}/>
-                            <button className="button" type="submit">Search Movie</button> */}
+                    <form  ref={searchRef}>
+                        {openSearch && <input type="search" className="input"  placeholder="i.e. Little Mermaid"
+                                value={inputValue}
+                                onChange={(e)=>{
+                                    searhMovies(e.target.value)
+                                }}/>}
+                            <CiSearch className={openSearch? "searchIconClose" :"searchIcon"}  onClick={()=>setOpenSearch(true)}/>
+                                    {/* <button className="button" type="submit">Search Movie</button> */} 
                     </form>
-                    {/* {user?  
-                        <div className="LogoutProfile">
-                                <FaRegCircleUser
-                                    className="profileIcon"
-                                    onMouseEnter={()=>setOpen(true)}
-                                />
-                                        {(open && user) && <ul>
-                                    <li className="logout">
-                                        <h2 onClick={userSignOut}>LogOut</h2>
-                                    </li>
-                                </ul>}
-                        </div>
-                               } */}
                     <div className="profile">
-                        <div className="LogoutProfile">
-                              { signedIn? <Avatar 
-                                variant="square"
-                                sx={{ bgcolor: 'gray', color:'black', width:{sm:'2em', md:'2em', lg:'2.5em'}, height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
-                                className="profileIcon">{user.charAt(0).toUpperCase()}</Avatar>: <FaRegCircleUser
-                                    className="profileIcon"
-                                    onMouseEnter={()=>setOpen(true)}
-                                />  }
-                                {(open && user) && <ul>
-                                    <li className="logout">
-                                        <h2 onClick={userSignOut}>LogOut</h2>
-                                    </li>
-                                </ul>}   
-                        </div>
-                        <h2 className="loginLink">
-                                {userUi}
-                        </h2>
+                                <div className="LogoutProfile">
+                                    { signedIn? <Avatar 
+                                        variant="square"
+                                        sx={{ bgcolor: 'gray', color:'black', width:{sm:'2em', md:'2em', lg:'2.5em'}, height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
+                                        className="profileIcon">{user.charAt(0).toUpperCase()}</Avatar>: <FaRegCircleUser
+                                            className="profileIcon"
+                                            onMouseEnter={()=>setOpen(true)}
+                                        />  }
+                                        {(open && user) && <ul>
+                                            <li className="logout">
+                                                <h2 onClick={userSignOut}>LogOut</h2>
+                                            </li>
+                                        </ul>}   
+                                </div>
+                                <h2 className="loginLink">
+                                        {userUi}
+                                </h2>
                     </div>
                 </div>      
             </div>
