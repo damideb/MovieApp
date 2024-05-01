@@ -15,6 +15,7 @@ export default function MoviePlayer() {
     const parseMovie = parseInt(movieId)
 
     const navigate = useNavigate()
+    const key = process.env.REACT_APP_API_KEY
 
 
     const loadingVal = async ()=>{
@@ -23,7 +24,7 @@ export default function MoviePlayer() {
     
 
     const fetchTrailer =  async(id)=>{
-      const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=2ee7df5e9a9849bfb5f047bbde626697&append_to_response=videos`)
+      const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos`)
       try{
         const data = await res.json()
         const video = data.videos.results
