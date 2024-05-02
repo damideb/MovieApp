@@ -1,5 +1,4 @@
 import React,{useRef, useState, useEffect} from "react";
-import { FaRegCircleUser } from "react-icons/fa6";
 import MovieImage from "./components/MovieImage";
 import { Link } from "react-router-dom";
 import { auth } from "./firebase";
@@ -21,7 +20,7 @@ export default function Movie(){
     const[selectedMovie, setSelectedMovie] = useState({})
     const[inputValue, setInputValue] =useState("")
     const[user, setUser] = useState("")
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(true)
     const [shows, setShows] = useState([])
     const [topRated, setTopRated] = useState([])
@@ -137,7 +136,6 @@ export default function Movie(){
         })
     }
 
-
     return loading? <SkeletonCard cards={12}/> : (
         <>
            
@@ -155,13 +153,11 @@ export default function Movie(){
                     </form>
                     <div className="profile">
                                 <div className="LogoutProfile">
-                                    { signedIn? <Avatar 
+                                    <Avatar 
+                                        onMouseEnter={()=>setOpen(true)}
                                         variant="square"
-                                        sx={{ bgcolor: 'gray', color:'black', width:{sm:'2em', md:'2em', lg:'2.5em'}, height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
-                                        className="profileIcon">{user.charAt(0).toUpperCase()}</Avatar>: <FaRegCircleUser
-                                            className="profileIcon"
-                                            onMouseEnter={()=>setOpen(true)}
-                                        />  }
+                                        sx={{ bgcolor: 'gray', color:'black', width:'2.2em', height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
+                                        className="profileIcon">{signedIn && user.charAt(0).toUpperCase()}</Avatar>
                                         {(open && user) && <ul>
                                             <li className="logout">
                                                 <h2 onClick={userSignOut}>LogOut</h2>

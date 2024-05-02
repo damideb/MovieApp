@@ -24,20 +24,23 @@ export default function MoviePlayer() {
     
 
     const fetchTrailer =  async(id)=>{
-      const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos`)
-      try{
-        const data = await res.json()
-        const video = data.videos.results
-        const trailer=  video.find(trailer=> trailer.name==='Official Trailer')
-        console.log(data.videos.results)
-        setTrailerMovie(trailer? trailer : video[0])
-        setMovieDetails(data)
-      await loadingVal()
-      }
-      catch(error){
-        console.log(error)
-      }
-     
+        const res = await fetch (`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&append_to_response=videos`)
+        try{
+          const data = await res.json()
+          const video = data.videos.results
+          const trailer=  video.find(trailer=> trailer.name==='Official Trailer')
+          console.log(data.videos.results)
+          setTrailerMovie(trailer? trailer : video[0])
+          setMovieDetails(data)
+      
+        }
+        catch(error){
+          console.log(error)
+        }
+
+        finally{
+          await loadingVal()
+        }
     }
 
     useEffect(()=>{
