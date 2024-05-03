@@ -35,14 +35,13 @@ small {
 
 .all-container {
   margin: 0;
-  padding: 0 30px;
+  padding: 0 25px;
   width: 100%;
 }
 
 .title {
   font-weight: light;
-  font-size: 4rem;
-  text-align: center;
+  font-size: 3rem;
   color: #ddd;
   margin:0 1em;
   font-family: 'VT323', cursive;
@@ -72,7 +71,6 @@ small {
 
 .profileIcon{
   margin: 0;
-  font-size: 4rem;
   bottom: 0em;
   color:#ddd;
   cursor:pointer;
@@ -195,6 +193,7 @@ h2{
 }
 .img-div{
   width: 28em;
+  padding: 0.3px;
 }
 
 .all-card--image {
@@ -202,7 +201,7 @@ h2{
   aspect-ratio: 16/9;
   max-width: 25%;
   object-fit: cover;
-  object-position: right 1em top -20px;
+  object-position: right 0.5em top -20px;
   max-width: 100%;
   cursor: pointer;
 }
@@ -487,8 +486,8 @@ align-items: center;
  }
 .title {
   font-size: 2em;
+    margin: 0.2em;
 }
-
 
 .hero{
   min-height: 300px;
@@ -506,7 +505,6 @@ align-items: center;
 
 .profileIcon{
   margin: 0;
-  font-size: 3.5rem;
   position: absolute;
   bottom: 0;
 
@@ -519,6 +517,10 @@ align-items: center;
 .all-card--image {
    aspect-ratio: 16/14;
  
+ }
+
+ .all-container {
+  padding: 0 4px;
  }
 
 
@@ -549,7 +551,7 @@ align-items: center;
       border-radius: 15px;
 }
 .input::placeholder{
-  font-size: 0.5em;
+  font-size: 0.7em;
   padding: 0em;
 }
 .searchIconClose{
@@ -569,7 +571,7 @@ align-items: center;
 }
 
 .selected{
-    padding:0.5em 1em;
+  padding:0.5em 0.5em;
 }
 
 .selected-overview{
@@ -661,15 +663,21 @@ align-items: center;
   .swiper-button-prev-unique, .swiper-button-prev-unique1, .swiper-button-prev-unique2{
    display: none;
   }
+  .selected{
+    padding:0.5em 0.3em;
+  }
+  .movieHeading{
+    font-size: 1.3em;
+  }
 
   
 .img-div{
-  width: 15em;
+  width: 13em;
 }
 
 .all-card--image {
    aspect-ratio: 11/13;
-   object-position: right 1em top -0px;
+   object-position: right 0.5em top -0px;
  }
 
  .swiper{

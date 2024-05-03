@@ -156,7 +156,7 @@ export default function Movie(){
                                     <Avatar 
                                         onMouseEnter={()=>setOpen(true)}
                                         variant="square"
-                                        sx={{ bgcolor: 'gray', color:'black', width:'2.2em', height:{sm:'1em', lg:'1.5em'}, fontSize:"3rem", marginTop:'0.2em'}}
+                                        sx={{ bgcolor: 'gray', color:'black', width:{xs: '2em', lg:'2.2em'}, height:'1.5em', fontSize:{xs:'2.5em', lg:'3em'}, marginTop:'0.2em'}}
                                         className="profileIcon">{signedIn && user.charAt(0).toUpperCase()}</Avatar>
                                         {(open && user) && <ul>
                                             <li className="logout">
@@ -196,19 +196,19 @@ export default function Movie(){
                                 onSlideChange={() => console.log('slide change')}
                                 breakpoints={{
                                     0:{
-                                        slidesPerView: 2.4,
-                                      spaceBetween: 15,
+                                        slidesPerView: 2.9,
+                                        spaceBetween: 13,
                                     },
                                     520:{
-                                        slidesPerView: 2.3,
+                                        slidesPerView: 2.6,
                                         spaceBetween: 10,
                                     },
                                     675: {
-                                      slidesPerView: 2.2,
+                                      slidesPerView: 2.5,
                                       spaceBetween: 15,
                                     },
                                     768: {
-                                      slidesPerView: 2.5,
+                                      slidesPerView: 2.7,
                                       spaceBetween: 15,
                                     },
                                     1024: {
@@ -250,21 +250,21 @@ export default function Movie(){
                                 slidesPerView={4.3}
                                 slidesPerGroup={4}
                                 navigation={ 
-                                    {nextEl: '.swiper-button-next-unique1',
+                                {nextEl: '.swiper-button-next-unique1',
                                 prevEl: '.swiper-button-prev-unique1'}}
                                 onSwiper={(swiper) => console.log(swiper)}
                                 onSlideChange={() => console.log('slide change')}
                                 breakpoints={{
                                     0:{
-                                        slidesPerView: 2.4,
-                                      spaceBetween: 15,
+                                        slidesPerView: 2.9,
+                                        spaceBetween: 13,
                                     },
                                     520:{
-                                        slidesPerView: 2.3,
+                                        slidesPerView: 2.6,
                                         spaceBetween: 10,
                                     },
                                     675: {
-                                      slidesPerView: 2.2,
+                                      slidesPerView: 2.5,
                                       spaceBetween: 15,
                                     },
                                     768: {
@@ -312,15 +312,15 @@ export default function Movie(){
                                     onSlideChange={() => console.log('slide change')}
                                     breakpoints={{
                                         0:{
-                                            slidesPerView: 2.4,
-                                          spaceBetween: 15,
+                                            slidesPerView: 2.9,
+                                        spaceBetween: 13,
                                         },
                                         520:{
-                                            slidesPerView: 2.3,
+                                            slidesPerView: 2.6,
                                             spaceBetween: 10,
                                         },
                                         675: {
-                                          slidesPerView: 2.2,
+                                          slidesPerView: 2.5,
                                           spaceBetween: 15,
                                         },
                                         768: {
