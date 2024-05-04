@@ -291,6 +291,8 @@ align-items: center;
 
 .selected{
   padding:6em 3em;
+  color: white;
+mix-blend-mode: difference;
 }
 .selected-title,.selected-overview{
  padding: 1rem;

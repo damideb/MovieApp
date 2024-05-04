@@ -140,7 +140,7 @@ export default function Movie(){
         <>
            
             <div className="icons">
-                <h1 className="title">Movie App</h1>
+                <h1 className="title">MovieApp</h1>
                 <div className="searchProfile-container">
                     <form  ref={searchRef}>
                         {openSearch && <input type="search" className="input"  placeholder="i.e. Little Mermaid"
@@ -198,18 +198,22 @@ export default function Movie(){
                                     0:{
                                         slidesPerView: 2.9,
                                         spaceBetween: 13,
+                                        slidesPerGroup:2
                                     },
                                     520:{
                                         slidesPerView: 2.6,
                                         spaceBetween: 10,
+                                        slidesPerGroup:3
                                     },
                                     675: {
                                       slidesPerView: 2.5,
                                       spaceBetween: 15,
+                                      slidesPerGroup:3
                                     },
                                     768: {
                                       slidesPerView: 2.7,
                                       spaceBetween: 15,
+                                      slidesPerGroup:3
                                     },
                                     1024: {
                                       slidesPerView: 4.3,
@@ -258,18 +262,22 @@ export default function Movie(){
                                     0:{
                                         slidesPerView: 2.9,
                                         spaceBetween: 13,
+                                        slidesPerGroup:2
                                     },
                                     520:{
                                         slidesPerView: 2.6,
                                         spaceBetween: 10,
+                                        slidesPerGroup:3
                                     },
                                     675: {
                                       slidesPerView: 2.5,
                                       spaceBetween: 15,
+                                      slidesPerGroup:3
                                     },
                                     768: {
                                       slidesPerView: 2.5,
                                       spaceBetween: 30,
+                                      slidesPerGroup:3
                                     },
                                     1024: {
                                       slidesPerView: 4.3,
@@ -314,18 +322,22 @@ export default function Movie(){
                                         0:{
                                             slidesPerView: 2.9,
                                         spaceBetween: 13,
+                                        slidesPerGroup:2
                                         },
                                         520:{
                                             slidesPerView: 2.6,
                                             spaceBetween: 10,
+                                            slidesPerGroup:3
                                         },
                                         675: {
                                           slidesPerView: 2.5,
                                           spaceBetween: 15,
+                                          slidesPerGroup:3
                                         },
                                         768: {
                                           slidesPerView: 2.5,
                                           spaceBetween: 30,
+                                          slidesPerGroup:3
                                         },
                                         1024: {
                                           slidesPerView: 4.3,
