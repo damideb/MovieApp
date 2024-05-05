@@ -7,7 +7,6 @@ import Signup from "./pages/signup";
 import AuthRequired from "./pages/authRequired";
 import { SkeletonTheme } from 'react-loading-skeleton';
 
-
 export default function App(){
 
     return(

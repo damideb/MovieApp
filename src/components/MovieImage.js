@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { SwiperSlide } from 'swiper/react'
 
 export default function MovieImage({movie, setmovie}) {
     
@@ -18,7 +17,6 @@ export default function MovieImage({movie, setmovie}) {
                         alt={movie.title + ' poster'}
                         />
                 </div>
-              
             </Link>   
             <div className="all-card--content">
                 <h3 className="all-card--title">{movie.title}</h3>
