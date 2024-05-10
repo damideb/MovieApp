@@ -412,13 +412,14 @@ mix-blend-mode: difference;
   margin-right: 0.5em;
   margin-top: 0.2em;
   display: inline-block;
-  border-bottom: 3.2px  solid white;
-  border-left: 3.2px  solid white ;
-  color: white;
+  border-left: 3px  solid rgba(255, 255, 255, 0.24);
+  border-right: 3px  solid white;
+  border-bottom: 3px  solid rgba(255, 255, 255, 0.24);
+  border-top: 3px solid white;
   border-radius: 50%;
-  -webkit-animation: spin 0.7s linear infinite reverse both;
-  animation: spin 0.7s linear infinite reverse both;
-  -ms-animation:spin 075s linear infinite reverse both;
+  -webkit-animation: spin 0.7s linear infinite  both;
+  animation: spin 0.7s linear infinite  both;
+  -ms-animation:spin 075s linear infinite  both;
 }
 
 @-webkit-keyframes spin {

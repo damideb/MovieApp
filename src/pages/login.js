@@ -18,10 +18,10 @@ export default function Signin() {
     const from = location.state?.from || '/'
     
     const login = ()=>{
-      
+      setLogginIn(true)
       signInWithEmailAndPassword(auth, useremail, userPassword)
       .then(()=>{
-        setLogginIn(true)
+        
         setErrorMessage('')
       })
 
@@ -31,12 +31,13 @@ export default function Signin() {
         }, 2000)
       })
       
-      
       .catch((error)=>{
         console.log(error.code)
+        setLogginIn(false)
         setErrorMessage('Invalid credentials')
       })
     }
+
 
     let disable= true
     if(userPassword && useremail !==""){
