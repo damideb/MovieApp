@@ -418,8 +418,8 @@ mix-blend-mode: difference;
   border-top: 3px solid white;
   border-radius: 50%;
   -webkit-animation: spin 0.7s linear infinite  both;
-  animation: spin 0.7s linear infinite  both;
-  -ms-animation:spin 075s linear infinite  both;
+  animation: spin 0.7s linear infinite ;
+  -ms-animation:spin 075s linear infinite ;
 }
 
 @-webkit-keyframes spin {
