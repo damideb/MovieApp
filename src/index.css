@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poiret+One&family=VT323&family=Sevillana&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Poiret+One&family=VT323&family=Sevillana&display=swap");
 html {
   font-size: 10px;
 }
@@ -7,7 +7,7 @@ html {
   box-sizing: border-box;
 }
 
-a{
+a {
   color: #ddd;
   text-decoration: none;
 }
@@ -17,7 +17,7 @@ body {
   padding: 0;
   background-color: rgb(8, 8, 8);
   color: whitesmoke;
-  font-family: 'Poiret One', cursive;
+  font-family: "Poiret One", cursive;
   position: relative;
 }
 
@@ -29,8 +29,8 @@ small {
   font-size: 1.2rem;
 }
 
-.movieHeading{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.movieHeading {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 .all-container {
@@ -43,63 +43,63 @@ small {
   font-weight: light;
   font-size: 3rem;
   color: #ddd;
-  margin:0 1em;
-  font-family: 'VT323', cursive;
+  margin: 0 1em;
+  font-family: "VT323", cursive;
   letter-spacing: 3px;
 }
 
-.searchIcon{
+.searchIcon {
   font-size: 2.5rem;
-  color:#ddd;
-  cursor:pointer;
+  color: #ddd;
+  cursor: pointer;
 }
 
-.searchIconClose{
+.searchIconClose {
   font-size: 2rem;
-  color:#ddd;
-  cursor:pointer;
+  color: #ddd;
+  cursor: pointer;
   position: absolute;
   margin: 0.2em;
   opacity: 0.5;
 }
 
-.profile{
+.profile {
   margin: 0;
   display: flex;
   align-items: center;
 }
 
-.profileIcon{
+.profileIcon {
   margin: 0;
   bottom: 0em;
-  color:#ddd;
-  cursor:pointer;
+  color: #ddd;
+  cursor: pointer;
 }
 
-.logout{
-  display:none;  
+.logout {
+  display: none;
 }
-.loginLink{
+.loginLink {
   font-size: 1.5rem;
-  padding-top: 1em; 
-  margin-left: 1em; 
+  padding-top: 1em;
+  margin-left: 1em;
 }
 
-.LogoutProfile:hover .logout{
+.LogoutProfile:hover .logout {
   display: block;
   width: 100%;
   position: absolute;
   top: 5.5em;
   left: 0;
   font-size: 1rem;
-  letter-spacing:0.8px;
+  letter-spacing: 0.8px;
   background-color: rgba(128, 128, 128, 0.304);
   height: 3.5em;
   padding: 0.5em 0.3em;
   cursor: pointer;
 }
 
-.icons{
+.icons {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -112,24 +112,24 @@ small {
   z-index: 1000;
 }
 
-.searchProfile-container{
+.searchProfile-container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   gap: 3em;
-  margin:0 2em;
+  margin: 0 2em;
 }
 
-.LogoutProfile{
+.LogoutProfile {
   display: block;
   position: relative;
 }
 
-li{
-    list-style-type: none;
+li {
+  list-style-type: none;
 }
 
-form{
+form {
   margin-left: auto;
   margin-top: 1em;
   display: flex;
@@ -137,7 +137,7 @@ form{
   position: relative;
 }
 
-h2{
+h2 {
   margin: 0;
 }
 
@@ -151,32 +151,30 @@ h2{
   border: 1px solid #ddd;
   outline: none;
   padding: 0.5em 2em;
-  transition:all 250ms ease-in ;
+  transition: all 250ms ease-in;
   transition-delay: 100ms;
 }
 
-.input:focus{
+.input:focus {
   outline: none;
 }
 
 .button {
   height: 103%;
-  background-color:#ddd ;
+  background-color: #ddd;
   color: black;
   padding: 3px;
   border: none;
   border-radius: 0 10px;
   font-size: 1rem;
   cursor: pointer;
-  font-family: 'Poiret One';
+  font-family: "Poiret One";
   font-weight: bolder;
-  
 }
 
 .all-card {
   margin-bottom: 2rem;
   transition: all 250ms ease-in-out;
-
 }
 
 .all-card--title {
@@ -191,13 +189,13 @@ h2{
   margin-bottom: 0.8rem;
   font-size: 3.2rem;
 }
-.img-div{
+.img-div {
   width: 28em;
   padding: 0.3px;
 }
 
 .all-card--image {
- width: 100%;
+  width: 100%;
   aspect-ratio: 16/9;
   max-width: 25%;
   object-fit: cover;
@@ -206,51 +204,59 @@ h2{
   cursor: pointer;
 }
 
-.swiper-button-next-unique, .swiper-button-next-unique1, .swiper-button-next-unique2{
+.swiper-button-next-unique,
+.swiper-button-next-unique1,
+.swiper-button-next-unique2 {
   border: none;
   border-radius: 1rem;
   flex-grow: 0;
   flex-shrink: 0;
   background-color: rgba(255, 255, 255, 0.409);
   z-index: 10;
-  width: 3.3rem;
+  width: 4rem;
   cursor: pointer;
   font-size: 5rem;
   color: white;
   transition: all 150ms ease-in-out;
   position: absolute;
   right: 0em;
-  margin-top:-1em;
+  margin-top: -1em;
+  display: flex;
+  justify-content: center;
 }
-.swiper-button-prev-unique, .swiper-button-prev-unique1, .swiper-button-prev-unique2{
+.swiper-button-prev-unique,
+.swiper-button-prev-unique1,
+.swiper-button-prev-unique2 {
   border: none;
   border-radius: 1rem;
   flex-grow: 0;
   flex-shrink: 0;
   background-color: rgba(255, 255, 255, 0.409);
   z-index: 10;
-  width: 3.3rem;
+  width: 4rem;
   cursor: pointer;
   font-size: 5rem;
   color: white;
   transition: all 150ms ease-in-out;
   position: absolute;
   left: 0em;
-  margin-top:-1em;
+  margin-top: -1em;
+  display: flex;
+  justify-content: center;
 }
 
-#hide{
+#hide {
   display: none;
 }
 
-.swiperParent{
-position: relative;
-display: flex;
-justify-content: space-between;
-align-items: center;
+.swiperParent {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.swiper{
+.swiper {
   width: 100%;
   height: 100%;
   overflow-x: scroll !important;
@@ -261,435 +267,440 @@ align-items: center;
   z-index: -1;
 }
 
-.swiper-slide {  
-  display:flex;
+.swiper-slide {
+  display: flex;
   gap: 0.2em;
-  margin-left: 1em;
-  transition: all 250ms ease-in-out;
+  margin: 0.6em;
+  transition: all 400ms ease-in-out;
+  transition-delay: 0.1s;
+  width: auto !important;
 }
 
-.swiper-slide:hover{
-  margin: 0 2em;
+.swiper-slide:hover {
   transform: scale(1.1);
 }
 
-.all-card-list::-webkit-scrollbar { 
+.all-card-list::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
-.all-skeleton{
+.all-skeleton {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.hero{
+.hero {
   min-height: 400px;
   margin-top: 5em;
   background-size: cover;
 }
 
-.selected{
-  padding:6em 3em;
+.selected {
+  padding: 6em 3em;
   color: white;
-mix-blend-mode: difference;
+  mix-blend-mode: difference;
 }
-.selected-title,.selected-overview{
- padding: 1rem;
- 
+.selected-title,
+.selected-overview {
+  padding: 1rem;
 }
-.selected-title{
+.selected-title {
   font-size: 4rem;
   font-weight: bolder;
 }
-.selected-overview{
+.selected-overview {
   font-size: 1.8rem;
   line-height: 1.5;
 }
 
-.videoPlayer{
+.videoPlayer {
   width: 90%;
   display: block;
   margin: 0px auto;
   float: none;
 }
-.youtube{
+.youtube {
   min-height: 100%;
   min-width: 100%;
   object-fit: fill;
- 
 }
 
-.skeletonPlayer{
+.skeletonPlayer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.back{
+.back {
   cursor: pointer;
   margin-top: 5em;
 }
 
-
 /* login page */
 
-.auth{
+.auth {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
-.stateMessage{
+.stateMessage {
   color: rgba(240, 14, 14, 0.76);
   font-size: 1.4rem;
   letter-spacing: 0.7px;
   margin-top: 2em;
 }
-.error{
+.error {
   color: orangered;
   font-weight: bolder;
   font-size: 1.7rem;
 }
-.login-form{
+.login-form {
   color: black;
   width: 55em;
   padding: 4rem;
   background-color: #ddd;
   border-radius: 20px;
   box-shadow: 0px 2px 10px #ddddddab;
-  
 }
 
-.login-div{
+.login-div {
   margin-bottom: auto;
- 
 }
 
-.login-heading{
+.login-heading {
   margin-top: 0.5em;
   text-align: center;
   font-size: 2.7rem;
   font-weight: bolder;
 }
 
-.login-body{
+.login-body {
   margin-top: 1.5em;
   width: 100%;
-
 }
 
-.login-element{
+.login-element {
   padding-bottom: 3em;
   margin: 2em 6em;
 }
 
-.email-label, .password-label{
+.email-label,
+.password-label {
   display: block;
   font-size: 1.5rem;
   margin-top: 2em;
   font-weight: bolder;
 }
 
-.input-div{
+.input-div {
   margin-top: 1em;
 }
 
-.input-email, .input-password{
+.input-email,
+.input-password {
   display: block;
   width: 25em;
   border-radius: 5px;
-  padding:0.8em 1.5em;
+  padding: 0.8em 1.5em;
   outline: none;
   font-size: 1.5rem;
   border: none;
 }
 
-.spinner{
-  width:0.9em;
+.spinner {
+  width: 0.9em;
   height: 0.9em;
   margin-right: 0.5em;
   margin-top: 0.2em;
   display: inline-block;
-  border-left: 3px  solid rgba(255, 255, 255, 0.24);
-  border-right: 3px  solid white;
-  border-bottom: 3px  solid rgba(255, 255, 255, 0.24);
+  border-left: 3px solid rgba(255, 255, 255, 0.24);
+  border-right: 3px solid white;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.24);
   border-top: 3px solid white;
   border-radius: 50%;
-  -webkit-animation: spin 0.7s linear infinite  both;
-  animation: spin 0.7s linear infinite ;
-  -ms-animation:spin 075s linear infinite ;
+  -webkit-animation: spin 0.7s linear infinite both;
+  animation: spin 0.7s linear infinite;
+  -ms-animation: spin 075s linear infinite;
 }
 
 @-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-.password-div{
+.password-div {
   position: relative;
 }
 
-.eyeIcon{
+.eyeIcon {
   position: absolute;
   bottom: 0.5em;
-  right: 0em ;
+  right: 0em;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-.Login-button{
+.Login-button {
   width: 24em;
-  margin-top: 3em;
+  margin-top: 2em;
   font-size: 1.6rem;
-  border-radius: 20px;
- border: none;
+  border-radius: 10px;
+  border: none;
   cursor: pointer;
   padding: 0.3em;
   background-color: #5d5c5cd0;
+  height: 2.5em;
+  color: white;
 }
 
-.Login-button:disabled{
+.Login-button:disabled {
   cursor: not-allowed;
   opacity: 0.8;
   font-weight: bolder;
 }
 
-.register-text{
+.register-text {
   text-align: center;
   font-size: 1.3rem;
 }
 
-.span a{
+.span a {
   color: black;
   font-weight: bolder;
   font-size: 1.4rem;
 }
 
-.movieDetails{
+.movieDetails {
   font-size: 1.5rem;
   font-weight: bolder;
 }
 
-.card--desc{
+.card--desc {
   font-size: 1.5rem;
   font-weight: bolder;
+}
+
+.swiper-slide {
+  width: auto;
 }
 
 @media only screen and (max-width: 600px) {
- .icons{
-  padding: 0em;
-  flex-wrap: nowrap;
- }
-.title {
-  font-size: 2em;
+  .icons {
+    padding: 0em;
+    flex-wrap: nowrap;
+  }
+  .title {
+    font-size: 2em;
     margin: 0.2em;
-}
+  }
 
-.hero{
-  min-height: 300px;
-}
+  .hero {
+    min-height: 300px;
+  }
 
-.searchIcon{
-  margin-top: 0.3em;
-  font-size: 2.2rem;
-}
+  .searchIcon {
+    margin-top: 0.3em;
+    font-size: 2.2rem;
+  }
 
-.searchProfile-container{
-  gap: 1em;
-  margin:0 0.5em;
-}
+  .searchProfile-container {
+    gap: 1em;
+    margin: 0 0.5em;
+  }
 
-.profileIcon{
-  margin: 0;
-  position: absolute;
-  bottom: 0;
+  .profileIcon {
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+  }
 
-}
+  .img-div {
+    width: 20em;
+  }
 
-.img-div{
-  width: 20em;
-}
+  .all-card--image {
+    aspect-ratio: 16/14;
+  }
 
-.all-card--image {
-   aspect-ratio: 16/14;
- 
- }
+  .all-container {
+    padding: 0 4px;
+  }
 
- .all-container {
-  padding: 0 4px;
- }
+  .all-card {
+    margin-bottom: 0rem;
+  }
 
+  .card--title {
+    font-size: 3rem;
+  }
 
-.all-card {
-  margin-bottom: 0rem;
- 
-}
+  .LogoutProfile:hover .logout {
+    font-size: 0.9rem;
+    letter-spacing: 0.8px;
+    padding: 0;
+    text-align: center;
+    top: 5.5em;
+    line-height: 25px;
+  }
 
-
-.card--title {
-  font-size: 3rem;
-}
-
-
-.LogoutProfile:hover .logout{
-  font-size: 0.9rem;
-  letter-spacing:0.8px;
-  padding: 0;
-  text-align: center;
-  top: 5.5em;
-  line-height: 25px;
-}
-
-
-.input {
+  .input {
     max-width: 11rem;
-      padding: 0.4em 1.5em; 
-      border-radius: 15px;
-}
-.input::placeholder{
-  font-size: 0.7em;
-  padding: 0em;
-}
-.searchIconClose{
-  font-size: 1.5rem;
-}
+    padding: 0.4em 1.5em;
+    border-radius: 15px;
+  }
+  .input::placeholder {
+    font-size: 0.7em;
+    padding: 0em;
+  }
+  .searchIconClose {
+    font-size: 1.5rem;
+  }
 
-.loginLink{
+  .loginLink {
     font-size: 1.7rem;
     margin-left: 1em;
-   
-}
+  }
 
-.button {
+  .button {
     padding: 2px;
     font-size: 1rem;
     margin: -0.1em;
-}
+  }
 
-.selected{
-  padding:0.5em 0.5em;
-}
+  .selected {
+    padding: 0.5em 0.5em;
+  }
 
-.selected-overview{
+  .selected-overview {
     font-size: 1.6rem;
     line-height: 2;
-}
+  }
 
-.selected-title{
+  .selected-title {
     font-size: 3rem;
+  }
+
+  .stateMessage {
+    font-size: 1.2rem;
+  }
+  .login-form {
+    width: 35em;
+    padding: 4rem;
+    background-color: #ddd;
+  }
+
+  .login-div {
+    margin-bottom: auto;
+  }
+
+  .login-heading {
+    margin-top: 0.5em;
+    font-size: 2rem;
+  }
+
+  .login-body {
+    margin-top: 1.5em;
+  }
+
+  .login-element {
+    padding-bottom: 3em;
+    margin: 2em 0em;
+  }
+
+  .email-label,
+  .password-label {
+    font-size: 1.5rem;
+    margin-top: 2em;
+  }
+
+  .input-div {
+    margin-top: 1em;
+  }
+
+  .input-email,
+  .input-password {
+    display: block;
+    width: 18em;
+    padding: 0.8em 1.5em;
+    font-size: 1.5rem;
+  }
+
+  .Login-button {
+    width: 17em;
+    padding: 0.3em;
+  }
+
+  .videoPlayer {
+    width: 95%;
+    display: block;
+    margin: 2em;
+    float: none;
+  }
+  .youtube {
+    width: 100%;
+  }
+
+  .eyeIcon {
+    right: 0.7em;
+  }
+  .all-skeleton {
+    display: flex;
+    gap: 3em;
+  }
+
+  .skeletonPlayer {
+    margin-top: 5em;
+  }
 }
 
-  
-.stateMessage{
-  font-size: 1.2rem;
-}
-.login-form{
-  width: 35em;
-  padding: 4rem;
-  background-color: #ddd;
-}
-
-.login-div{
-  margin-bottom: auto;
-}
-
-.login-heading{
-  margin-top: 0.5em;
-  font-size: 2rem;
-}
-
-.login-body{
-  margin-top: 1.5em;
-}
-
-.login-element{
-  padding-bottom: 3em;
-  margin: 2em 0em;
-}
-
-.email-label, .password-label{
-  font-size: 1.5rem;
-  margin-top: 2em;
-}
-
-.input-div{
-  margin-top: 1em;
-}
-
-.input-email, .input-password{
-  display: block;
-  width: 18em;
-  padding:0.8em 1.5em;
-  font-size: 1.5rem;
-}
-
-.Login-button{
-  width: 17em;
-  padding: 0.3em;
-}
-
-.videoPlayer{
-  width: 95%;
-  display: block;
-  margin: 2em;
-  float: none;
-}
-.youtube{
- width: 100%; 
-}
-
-.eyeIcon{
-  right: 0.7em;
-}
-.all-skeleton{
-  display: flex;
-  gap: 3em;
-}
-
-.skeletonPlayer{
- margin-top: 5em;
-}
-}
-
-@media screen and (max-width: 485px){
-
-  .swiper-button-next-unique, .swiper-button-next-unique1, .swiper-button-next-unique2{
+@media screen and (max-width: 485px) {
+  .swiper-button-next-unique,
+  .swiper-button-next-unique1,
+  .swiper-button-next-unique2 {
     display: none;
   }
-  .swiper-button-prev-unique, .swiper-button-prev-unique1, .swiper-button-prev-unique2{
-   display: none;
+  .swiper-button-prev-unique,
+  .swiper-button-prev-unique1,
+  .swiper-button-prev-unique2 {
+    display: none;
   }
-  .selected{
-    padding:0.5em 0.3em;
+  .selected {
+    padding: 0.5em 0.3em;
   }
-  .movieHeading{
+  .movieHeading {
     font-size: 1.3em;
   }
 
-  
-.img-div{
-  width: 13em;
+  .img-div {
+    width: 13em;
+  }
+
+  .all-card--image {
+    aspect-ratio: 11/13;
+    object-position: right 0.5em top -0px;
+  }
+
+  .swiper {
+    margin-bottom: 1em;
+  }
+
+  .swiper-slide {
+    margin-left: 0.5em;
+  }
 }
-
-.all-card--image {
-   aspect-ratio: 11/13;
-   object-position: right 0.5em top -0px;
- }
-
- .swiper{
-  margin-bottom: 1em;
-
-}
-
-.swiper-slide {  
-  margin-left: 0.5em;
-}
-}
-
